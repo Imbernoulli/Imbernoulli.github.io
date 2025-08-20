@@ -15,14 +15,12 @@ slides:
 youtube:
 highlight: false
 bibtex: |
-    @misc{lyu2025surgepotentiallargelanguage,
-        title={SURGE: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors}, 
-        author={Bohan Lyu and Siqiao Huang and Zichen Liang and Qi-An Sun and Jiaming Zhang},
+    @inproceedings{lyu2025surge,
+        title={Surge: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors},
+        author={Bohan Lyu and Siqiao Huang and Zichen Liang and Qian Sun and Jiaming Zhang},
+        booktitle={The 2025 Conference on Empirical Methods in Natural Language Processing},
         year={2025},
-        eprint={2502.11167},
-        archivePrefix={arXiv},
-        primaryClass={cs.LG},
-        url={https://arxiv.org/abs/2502.11167}, 
+        url={https://openreview.net/forum?id=omUKmBZJiR}
     }
 ---
 SURGE evaluates LLMs' ability to predict code execution across eight key areas. While they show promise, limitations prevent general-purpose surrogate execution. <u>This is an extension of a course project that does not reflect the focus of my research.</u>
