@@ -15,13 +15,12 @@ highlight: false
 slides: /pdfs/OpenAct_Pre.pdf
 youtube: https://www.youtube.com/watch?v=laW4ApAlxik
 bibtex: |
-    @inproceedings{
-        lyu2025enhancing,
-        title={Enhancing Large Language Model's Capabilities in Open Domains via Autonomous Tool Integration from {GitHub}},
-        author={Bohan Lyu and Xin Cong and Heyang Yu and Pan Yang and Cheng Qian and Zihe Wang and Yujia Qin and Yining Ye and Yaxi Lu and Chen Qian and Zhong Zhang and Yukun Yan and Yankai Lin and Zhiyuan Liu and Maosong Sun},
-        booktitle={The 63rd Annual Meeting of the Association for Computational Linguistics},
-        year={2025},
-        url={https://openreview.net/forum?id=cDppq8dYFA}
+    @inproceedings{lyu2025enhancing,
+        title={Enhancing Open-Domain Task-Solving Capability of LLMs via Autonomous Tool Integration from GitHub},
+        author={Lyu, Bohan and Cong, Xin and Yu, Heyang and Yang, Pan and Qian, Cheng and Wang, Zihe and Qin, Yujia and Ye, Yining and Lu, Yaxi and Qian, Chen and others},
+        booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+        pages={17257--17277},
+        year={2025}
     }
 ---
 Constructed OpenAct benchmark for complex open-domain task-solving. Developed a novel LLM agent system, OpenAgent, which leverages GitHub repositories to extend its capabilities to address diverse user queries.

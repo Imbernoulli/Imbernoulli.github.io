@@ -15,13 +15,10 @@ slides: /pdfs/AWL-FSS.pdf
 youtube: https://youtu.be/EPhse_oOdEc?si=5L8PytRUhWp94vXQ
 highlight: true
 bibtex: |
-    @inproceedings{
-        lyu2025adapting,
-        title={Adapting While Learning: Grounding {LLM}s for Scientific Problems with Tool Usage Adaptation},
-        author={Bohan Lyu and Yadi Cao and Duncan Watson-Parris and Leon Bergen and Taylor Berg-Kirkpatrick and Rose Yu},
-        booktitle={Forty-second International Conference on Machine Learning},
-        year={2025},
-        url={https://openreview.net/forum?id=owulFly8oQ}
+    @inproceedings{lyuadapting,
+        title={Adapting While Learning: Grounding LLMs for Scientific Problems with Tool Usage Adaptation},
+        author={Lyu, Bohan and Cao, Yadi and Watson-Parris, Duncan and Bergen, Leon and Berg-Kirkpatrick, Taylor and Yu, Rose},
+        booktitle={Forty-second International Conference on Machine Learning}
     }
 ---
 This work proposes a fine-tuning method where LLMs internalize tool-generated solutions (World Knowledge Distillation) and learn to switch between direct answers and tool use for complex problems (Tool Usage Adaptation). It outperforms GPT-4 and Claude-3.5 across six scientific benchmarks.
