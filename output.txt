@@ -33,7 +33,7 @@ for file in images/*.{jpg,png}; do
 done
 
 === File: ./CNAME ===
-lyubh.cn
+bohanlyu.com
 
 === File: ./README.md ===
 # updated website
@@ -51,6 +51,11 @@ The website design is just a modification of [Jon Barron's website](https://jonb
 * I use thumbnails, so I can upload arbitrary sized images but then only display small ones. The `_make_thumbnails.sh` script generates them and the html template looks in `tn/` for all images. 
 * I have three categories of post with slightly differerent formatting, so changing sizing requires edits in multiple paces. 
 
+
+=== File: ./test.html ===
+<span style="color: #2B64D9; font-family: 'Lato', sans-serif; font-size: 14px; margin: 0 8px;">arXiv</span> <span style="color: #2B64D9; font-family: 'Lato', sans-serif; font-size: 14px; margin: 0 8px;">Code</span> <span style="color: #2B64D9; font-family: 'Lato', sans-serif; font-size: 14px; margin: 0 8px;">Website</span>
+
+<span style="color: #f09228; font-family: 'Lato', sans-serif; font-size: 14px; margin: 0 8px; border-bottom: 1.5px solid #f09228;">arXiv</span> <span style="color: #f09228; font-family: 'Lato', sans-serif; font-size: 14px; margin: 0 8px; border-bottom: 1.5px solid #f09228;">Code</span> <span style="color: #f09228; font-family: 'Lato', sans-serif; font-size: 14px; margin: 0 8px; border-bottom: 1.5px solid #f09228;">Website</span>
 
 === File: ./style.scss ===
 ---
@@ -431,23 +436,21 @@ image: /images/surge.png
 categories: research
 author: "<b>Bohan Lyu*</b>, Siqiao Huang*, Zichen Liang*, Qi-An Sun, Jiaming Zhang"
 authors: "<b>Bohan Lyu*</b>, Siqiao Huang*, Zichen Liang*, Qi-An Sun, Jiaming Zhang"
-venue: "Preprint"
+venue: "<b>EMNLP 2025 (Main, meta score top 0.3%)</b>"
 arxiv: https://arxiv.org/abs/2502.11167
 code: https://github.com/Imbernoulli/SURGE
 website: 
-selected: false 
+selected: true
 slides: 
 youtube:
 highlight: false
 bibtex: |
-    @misc{lyu2025surgepotentiallargelanguage,
-        title={SURGE: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors}, 
-        author={Bohan Lyu and Siqiao Huang and Zichen Liang and Qi-An Sun and Jiaming Zhang},
+    @inproceedings{lyu2025surge,
+        title={Surge: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors},
+        author={Bohan Lyu and Siqiao Huang and Zichen Liang and Qian Sun and Jiaming Zhang},
+        booktitle={The 2025 Conference on Empirical Methods in Natural Language Processing},
         year={2025},
-        eprint={2502.11167},
-        archivePrefix={arXiv},
-        primaryClass={cs.LG},
-        url={https://arxiv.org/abs/2502.11167}, 
+        url={https://openreview.net/forum?id=omUKmBZJiR}
     }
 ---
 SURGE evaluates LLMs' ability to predict code execution across eight key areas. While they show promise, limitations prevent general-purpose surrogate execution. <u>This is an extension of a course project that does not reflect the focus of my research.</u>
@@ -470,13 +473,12 @@ highlight: false
 slides: /pdfs/OpenAct_Pre.pdf
 youtube: https://www.youtube.com/watch?v=laW4ApAlxik
 bibtex: |
-    @inproceedings{
-        lyu2025enhancing,
-        title={Enhancing Large Language Model's Capabilities in Open Domains via Autonomous Tool Integration from {GitHub}},
-        author={Bohan Lyu and Xin Cong and Heyang Yu and Pan Yang and Cheng Qian and Zihe Wang and Yujia Qin and Yining Ye and Yaxi Lu and Chen Qian and Zhong Zhang and Yukun Yan and Yankai Lin and Zhiyuan Liu and Maosong Sun},
-        booktitle={The 63rd Annual Meeting of the Association for Computational Linguistics},
-        year={2025},
-        url={https://openreview.net/forum?id=cDppq8dYFA}
+    @inproceedings{lyu2025enhancing,
+        title={Enhancing Open-Domain Task-Solving Capability of LLMs via Autonomous Tool Integration from GitHub},
+        author={Lyu, Bohan and Cong, Xin and Yu, Heyang and Yang, Pan and Qian, Cheng and Wang, Zihe and Qin, Yujia and Ye, Yining and Lu, Yaxi and Qian, Chen and others},
+        booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+        pages={17257--17277},
+        year={2025}
     }
 ---
 Constructed OpenAct benchmark for complex open-domain task-solving. Developed a novel LLM agent system, OpenAgent, which leverages GitHub repositories to extend its capabilities to address diverse user queries.
@@ -488,17 +490,24 @@ title:  "Goedel-Prover-V2: The Strongest Open-Source Theorem Prover to Date"
 date:   2025-07-15 00:00:00 +00:00
 image: /images/goedel-v2.png
 categories: research
-author: "Yong Lin*, Shange Tang*, <b>Bohan Lyu*</b>, Ziran Yang*, Jui-Hui Chung*, Haoyu Zhao*, Lai Jiang, Yihan Geng, Jiawei Ge, Jingruo Sun, Jiayun Wu, Jiri Gesi, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin"
-authors: "Yong Lin*, Shange Tang*, <b>Bohan Lyu*</b>, Ziran Yang*, Jui-Hui Chung*, Haoyu Zhao*, Lai Jiang, Yihan Geng, Jiawei Ge, Jingruo Sun, Jiayun Wu, Jiri Gesi, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin"
-venue: "Blog"
-arxiv: 
-code: 
+author: "Yong Lin*, Shange Tang*, <b>Bohan Lyu*</b>, Ziran Yang*, Jui-Hui Chung*, Haoyu Zhao*, Lai Jiang*, Yihan Geng*, Jiawei Ge, Ximing Lu, Jingruo Sun, Jiayun Wu, Jiri Gesi, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin"
+authors: "Yong Lin*, Shange Tang*, <b>Bohan Lyu*</b>, Ziran Yang*, Jui-Hui Chung*, Haoyu Zhao*, Lai Jiang*, Yihan Geng*, Jiawei Ge, Ximing Lu, Jingruo Sun, Jiayun Wu, Jiri Gesi, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin"
+venue: "AI4MATH @ ICML 2025 (Oral)"
+arxiv: https://arxiv.org/abs/2508.03613
+code: https://github.com/Goedel-LM/Goedel-Prover-V2
 website: http://blog.goedel-prover.com
 selected: true
 slides: 
 youtube: 
 highlight: true
-bibtex: 
+bibtex: |
+    @article{lin2025goedelproverv2,
+        title={Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction}, 
+        author={Yong Lin and Shange Tang and Bohan Lyu and Ziran Yang and Jui-Hui Chung and Haoyu Zhao and Lai Jiang and Yihan Geng and Jiawei Ge and Jingruo Sun and Jiayun Wu and Jiri Gesi and Ximing Lu and David Acuna and Kaiyu Yang and Hongzhou Lin and Yejin Choi and Danqi Chen and Sanjeev Arora and Chi Jin},
+        year={2025},
+        journal={arXiv preprint arXiv:2508.03613},
+        url={https://arxiv.org/abs/2508.03613}, 
+    }
 ---
 Goedel-Prover-V2 sets new state-of-the-art in automated proof generation with dramatically smaller models, using scaffolded training, self-correction, and model averaging to outperform systems 20-100x larger on key mathematical benchmarks.
 
@@ -511,7 +520,7 @@ image: /images/awl.png
 categories: research
 author: "<b>Bohan Lyu*</b>, Yadi Cao*, Duncan Watson-Parris, Leon Bergen, Taylor Berg-Kirkpatrick, Rose Yu"
 authors: "<b>Bohan Lyu*</b>, Yadi Cao*, Duncan Watson-Parris, Leon Bergen, Taylor Berg-Kirkpatrick, Rose Yu"
-venue: "<b>ICML 2025</b>, AAAI 2024 FSS (ORAL)"
+venue: "<b>ICML 2025</b>, AAAI 2024 FSS (Oral)"
 arxiv: https://arxiv.org/abs/2411.00412
 code: https://github.com/Rose-STL-Lab/Adapting-While-Learning
 website: https://icml.cc/virtual/2025/poster/44034
@@ -520,13 +529,10 @@ slides: /pdfs/AWL-FSS.pdf
 youtube: https://youtu.be/EPhse_oOdEc?si=5L8PytRUhWp94vXQ
 highlight: true
 bibtex: |
-    @inproceedings{
-        lyu2025adapting,
-        title={Adapting While Learning: Grounding {LLM}s for Scientific Problems with Tool Usage Adaptation},
-        author={Bohan Lyu and Yadi Cao and Duncan Watson-Parris and Leon Bergen and Taylor Berg-Kirkpatrick and Rose Yu},
-        booktitle={Forty-second International Conference on Machine Learning},
-        year={2025},
-        url={https://openreview.net/forum?id=owulFly8oQ}
+    @inproceedings{lyuadapting,
+        title={Adapting While Learning: Grounding LLMs for Scientific Problems with Tool Usage Adaptation},
+        author={Lyu, Bohan and Cao, Yadi and Watson-Parris, Duncan and Bergen, Leon and Berg-Kirkpatrick, Taylor and Yu, Rose},
+        booktitle={Forty-second International Conference on Machine Learning}
     }
 ---
 This work proposes a fine-tuning method where LLMs internalize tool-generated solutions (World Knowledge Distillation) and learn to switch between direct answers and tool use for complex problems (Tool Usage Adaptation). It outperforms GPT-4 and Claude-3.5 across six scientific benchmarks.
@@ -540,7 +546,7 @@ image: /images/ineq.png
 categories: research
 author: "Haoyu Zhao, Yihan Geng, Shange Tang, Yong Lin, <b>Bohan Lyu</b>, Hongzhou Lin, Chi Jin, Sanjeev Arora"
 authors: "Haoyu Zhao, Yihan Geng, Shange Tang, Yong Lin, <b>Bohan Lyu</b>, Hongzhou Lin, Chi Jin, Sanjeev Arora"
-venue: Preprint
+venue: <b>NeurIPS 2025</b> D&B Track
 arxiv: https://arxiv.org/pdf/2505.12680
 code: https://github.com/haoyuzhao123/LeanIneqComp
 website: 
@@ -688,10 +694,10 @@ layout: default
                 Bohan Lyu
               </h1>
               <p>
-                I am an undergruduate at <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>. I'm interested in ML and NLP topics. My works are published in ICML and ACL.
+                I am an undergruduate at <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a>. I'm interested in ML and NLP topics. My works are published in ICML, ACL, COLM, etc.
               </p>
               <p>
-                Now I'm working on LLMs for autonomous math theorem proving at <a href="https://pli.princeton.edu">PLI, Princeton</a>, advised by Prof. <a
+                Now I'm working on LLMs for automated math theorem proving at <a href="https://pli.princeton.edu">PLI, Princeton</a>, advised by Prof. <a
                 href="https://sites.google.com/view/cjin/home">Prof. Chi Jin</a>. Prior to it, I've worked in <a href="https://nlp.csai.tsinghua.edu.cn">Tsinghua NLP</a> Lab, advised by <a
                   href="https://nlp.csai.tsinghua.edu.cn/~lzy/">Prof. Zhiyuan Liu</a>, and Rose-STL-Lab, <a
                   href="https://www.ucsd.edu" style="color: #1B264A;">UCSD</a>, advised by <a
@@ -715,7 +721,7 @@ layout: default
                 <strong><em>3. How to verify natural language math reasoning with formal language?</em></strong>
               </p> -->
               <p>
-                I have served as a reviewer for ARR Feb. 2025, ICLR 2025, <a href="https://sites.google.com/view/ai4mathworkshopicml2024">AI4MATH @ ICML 2024</a> and <a href="https://llmagents.github.io">LLMAgents @ ICLR 2024</a> .
+                I'm serving as reviewers of ICLR, ARR, and workshops about AI4MATH and LLMAgents.
               </p>
               <p>
                 <strong>I am seeking PhD opportunities starting in Fall 2026.</strong> Please feel free to reach out!
@@ -725,7 +731,7 @@ layout: default
                 <a href="https://github.com/Imbernoulli">GitHub</a> &nbsp;/&nbsp;
                 <a href="https://scholar.google.com/citations?user=vMMFoTsAAAAJ&hl=en">Google Scholar</a> &nbsp;/&nbsp;
                 <a href="https://x.com/Lyubh22"> Twitter </a> &nbsp;/&nbsp;
-                <a href="http://lyubh.cn/pdfs/Bohan_s_Resume_New.pdf"> CV </a>
+                <a href="http://bohanlyu.com/pdfs/Bohan_s_Resume_New.pdf"> CV </a>
               </p>
             </td>
             <td style="padding:2.5%;width:35%;max-width:35%">
@@ -733,17 +739,6 @@ layout: default
                 &nbsp;&nbsp;&nbsp;
               </h1>
               <img style="width:100%;max-width:100%" alt="profile photo" src="images/blueMe2.png">
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2" style="padding:2.5%">
-              <div onclick="toggleContactInfo()">
-                &#9654;&nbsp;<b>Contact Info</b> (click to see)
-              </div>
-              <div id="contactInfo" style="display: none; padding: 10px; background-color: #f9f9f9;">
-                <p>WeChat: 13120040612</p>
-                <p>Email: <a href="mailto:lyubh22@gmail.com">lyubh22@gmail.com</a></p>
-              </div>
             </td>
           </tr>
         </table>
@@ -754,8 +749,10 @@ layout: default
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2 id="News">News</h2>
               <ul>
+                <!-- <li> <b>2025-08</b> <i>SURGE: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors</i> is accepted to <b>EMNLP 2025 Main</b>, with a top 0.3% meta score!</li> -->
+                <li> <b>2025-07</b> Gave a tutorial titled <b>LLM Reasoning: From Informal to Formal</b> at Department of Computer Science and Technology, Tsinghua University</i>.</li>
                 <li> <b>2025-07</b> Releasing <i>Goedel-Prover-V2</i>!</li>
-                <li> <b>2025-07</b> <i>Goedel-Prover</i> is accepted to <b>COLM 2025</b>!</li>
+                <!-- <li> <b>2025-07</b> <i>Goedel-Prover</i> is accepted to <b>COLM 2025</b>!</li> -->
                 <li> <b>2025-05</b> <i>Enhancing LLM's Capabilities in Open Domains via Autonomous Tool Integration</i> is accepted to <b>ACL 2025 Main</b>!</li>
                 <li> <b>2025-05</b> <i>Adapting while Learning</i> is accepted to <b>ICML 2025</b>!</li>
                 <!-- <li> <b>2024-12</b> Delivered a talk at the Challenge Cup Seminar hosted by Department of

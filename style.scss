@@ -221,3 +221,25 @@ span.highlight {
 }
 
 /* --- End BibTeX Modal Styles --- */
+
+/* --- Location Modal Specific Styles --- */
+#locationModal .modal-content {
+  text-align: center;
+}
+
+#locationModal .modal-content h2 {
+  text-align: center; /* Center the title for the location popup */
+  margin-bottom: 10px;
+}
+
+#locationModal .modal-content p,
+#locationModal .modal-content ul {
+  text-align: left; /* Keep text left-aligned within the modal */
+  margin-bottom: 10px;
+}
+
+#locationModal .modal-content ul {
+    list-style-type: disc; /* Use bullet points for the list */
+    padding-left: 20px; /* Indent the list */
+}
+/* --- End Location Modal Specific Styles --- */

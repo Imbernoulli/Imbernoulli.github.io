@@ -49,26 +49,11 @@
                   href="https://en.wikipedia.org/wiki/CSC_Financial#[new]_China_Securities_Co.,_Ltd._(2005–)"
                   style="color: #595c5b;">China Securities</a>.
               </p>
-              <!-- <p>
-                Recently I'm particularly interested in math theorem proving in formal language, and its applications (e.g. how it can benefit natural language reasoning).
-              </p> -->
-              <!-- <p>
-                My research interests lie in facilitating scientific discovery with large models. My current research
-                questions are:
-                <br>
-                <strong><em>1. How to enable models to learn from their interactions with the physical world and
-                    drive progress in scientific discovery?</em></strong>
-                <br>
-                <strong><em>2. How can we rigorously evaluate the capabilities of scientific agents with methods that
-                    go beyond static datasets?</em></strong>
-                <br>
-                <strong><em>3. How to verify natural language math reasoning with formal language?</em></strong>
-              </p> -->
               <p>
                 I'm serving as reviewers of ICLR, ARR, and workshops about AI4MATH and LLMAgents.
               </p>
               <p>
-                <strong>I am seeking PhD opportunities starting in Fall 2026.</strong> Please feel free to reach out!
+                <strong>I am seeking PhD opportunities starting in Fall 2026.</strong> Please feel free to reach out! Find me offline! -> <a href="#" id="locationTrigger">Where is Bohan?</a>
               </p>
               <p style="text-align:center">
                 <a target="_blank" href="mailto:lyubh22@gmail.com"> Email</a> &nbsp;/&nbsp;
@@ -93,24 +78,15 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2 id="News">News</h2>
               <ul>
-                <!-- <li> <b>2025-08</b> <i>SURGE: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors</i> is accepted to <b>EMNLP 2025 Main</b>, with a top 0.3% meta score!</li> -->
                 <li> <b>2025-07</b> Gave a tutorial titled <b>LLM Reasoning: From Informal to Formal</b> at Department of Computer Science and Technology, Tsinghua University</i>.</li>
                 <li> <b>2025-07</b> Releasing <i>Goedel-Prover-V2</i>!</li>
-                <!-- <li> <b>2025-07</b> <i>Goedel-Prover</i> is accepted to <b>COLM 2025</b>!</li> -->
                 <li> <b>2025-05</b> <i>Enhancing LLM's Capabilities in Open Domains via Autonomous Tool Integration</i> is accepted to <b>ACL 2025 Main</b>!</li>
                 <li> <b>2025-05</b> <i>Adapting while Learning</i> is accepted to <b>ICML 2025</b>!</li>
-                <!-- <li> <b>2024-12</b> Delivered a talk at the Challenge Cup Seminar hosted by Department of
-                  Automation, Tsinghua University.</li> -->
-                <!-- <li> <b>2024-11</b> Gave a talk on my summer project at AAAI FSS.</li> -->
-                <!-- <li> <b>2024-10</b> Awarded the Scholarship for Technological Innovation of 5,000 RMB.</li> -->
-                <!-- <li> <b>2024-09</b> My first-author paper is invited to give a 30-min talk at AAAI FSS 2024.</li> -->
                 <li> <b>2024-06</b> My team got <b>No.1</b> out of 600+ teams at a Baidu Inc. Data Mining Competition.
                 </li>
                 <li> <b>2024-05</b> Awarded Spark Scientific and Technological Innovation Fellowship (<b>Top 1%</b> in Tsinghua). </li>
                 <li> <b>2024-04</b> I led my team to win Second Place and the Newcomer Prize at <b>Tsinghua University's
                     Challenge Cup</b>. </li>
-                <!-- <li> <b>2024-04</b> I received a Grade A in the 'Global Exploration Initiative' and was awarded a grant
-                  of 20,000 RMB. </li> -->
               </ul>
             </td>
           </tr>
@@ -254,57 +230,50 @@
 
     document.addEventListener('DOMContentLoaded', function() {
       // Get modal elements
-      const modal = document.getElementById('bibtexModal');
-      const modalContentEl = document.getElementById('modalBibtexContent');
-      const closeBtn = modal.querySelector('.close-button');
+      const bibtexModal = document.getElementById('bibtexModal');
+      const bibtexModalContentEl = document.getElementById('modalBibtexContent');
+      const bibtexCloseBtn = bibtexModal.querySelector('.close-button');
       const copyBtn = document.getElementById('copyBibtexButton');
       const copyFeedbackEl = document.getElementById('copyFeedback');
-    
+      
       // Get all BibTeX trigger links
       const bibtexTriggers = document.querySelectorAll('.bibtex-trigger');
-    
-      // Function to show the modal
-      function showModal(bibtexContent) {
+      
+      // Function to show the BibTeX modal
+      function showBibtexModal(bibtexContent) {
         // Trim leading/trailing whitespace and set content
-        modalContentEl.textContent = bibtexContent.trim();
-        modal.style.display = 'block';
+        bibtexModalContentEl.textContent = bibtexContent.trim();
+        bibtexModal.style.display = 'block';
         copyFeedbackEl.style.display = 'none'; // Hide feedback initially
         copyBtn.disabled = false; // Ensure button is enabled
       }
-    
-      // Function to hide the modal
-      function hideModal() {
-        modal.style.display = 'none';
-        modalContentEl.textContent = ''; // Clear content for next time
+      
+      // Function to hide the BibTeX modal
+      function hideBibtexModal() {
+        bibtexModal.style.display = 'none';
+        bibtexModalContentEl.textContent = ''; // Clear content for next time
       }
-    
-      // Add click listeners to all trigger links
+      
+      // Add click listeners to all BibTeX trigger links
       bibtexTriggers.forEach(trigger => {
         trigger.addEventListener('click', function(event) {
           event.preventDefault(); // Prevent default link behavior
           const bibtex = this.dataset.bibtex;
           if (bibtex) {
-            showModal(bibtex);
+            showBibtexModal(bibtex);
           } else {
             console.warn("BibTeX data not found for this link.");
           }
         });
       });
-    
-      // Add listener to close button
-      closeBtn.addEventListener('click', hideModal);
-    
-      // Add listener to close modal when clicking outside the modal content
-      window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-          hideModal();
-        }
-      });
-    
+      
+      // Add listener to BibTeX close button
+      bibtexCloseBtn.addEventListener('click', hideBibtexModal);
+      
       // Add listener for copy button
       copyBtn.addEventListener('click', function() {
-        const textToCopy = modalContentEl.textContent;
-    
+        const textToCopy = bibtexModalContentEl.textContent;
+      
         // Use the modern Clipboard API
         if (navigator.clipboard && window.isSecureContext) {
           navigator.clipboard.writeText(textToCopy).then(() => {
@@ -331,7 +300,7 @@
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-    
+          
             // Success feedback
             copyFeedbackEl.style.display = 'inline';
             copyBtn.disabled = true;
@@ -345,14 +314,47 @@
           }
         }
       });
-    
-      // Optional: Close modal with Escape key
-      document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape" && modal.style.display === 'block') {
-          hideModal();
+      
+      // --- Location Popup Logic ---
+      const locationModal = document.getElementById('locationModal');
+      const locationTrigger = document.getElementById('locationTrigger');
+      const locationCloseBtn = locationModal.querySelector('.close-button');
+
+      function showLocationModal() {
+        locationModal.style.display = 'block';
+      }
+
+      function hideLocationModal() {
+        locationModal.style.display = 'none';
+      }
+
+      locationTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        showLocationModal();
+      });
+
+      locationCloseBtn.addEventListener('click', hideLocationModal);
+
+      // Close modals when clicking outside their content
+      window.addEventListener('click', function(event) {
+        if (event.target === bibtexModal) {
+          hideBibtexModal();
+        }
+        if (event.target === locationModal) {
+          hideLocationModal();
         }
       });
-    
+      
+      // Optional: Close modals with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape" && bibtexModal.style.display === 'block') {
+          hideBibtexModal();
+        }
+        if (event.key === "Escape" && locationModal.style.display === 'block') {
+          hideLocationModal();
+        }
+      });
+      
     });
 
     function toggleContactInfo() {
@@ -374,6 +376,21 @@
       <pre id="modalBibtexContent">BibTeX content will appear here.</pre>
       <button id="copyBibtexButton">Copy to Clipboard</button>
       <span id="copyFeedback" style="margin-left: 10px; color: green; display: none;">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Location Popup Modal -->
+  <div id="locationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Where is Bohan?</h2>
+      <p>I'm currently in <strong>Taiwan</strong>.</p>
+      <p>I plan to attend:</p>
+      <ul>
+        <li>EMNLP 2025</li>
+        <li>NeurIPS 2025</li>
+      </ul>
+      <p>Looking forward to meeting you there!</p>
     </div>
   </div>
 </body>
