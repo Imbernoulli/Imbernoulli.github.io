@@ -11,7 +11,7 @@ arxiv: https://arxiv.org/abs/2508.03613
 code: https://github.com/Goedel-LM/Goedel-Prover-V2
 website: http://blog.goedel-prover.com
 selected: true
-slides: 
+slides: https://icml.cc/virtual/2025/workshop/39979#wse-detail-48755
 youtube: 
 highlight: true
 bibtex: |
