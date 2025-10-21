@@ -53,7 +53,7 @@
                 I'm serving as reviewers of ICLR, ARR, and workshops about AI4MATH and LLMAgents.
               </p>
               <p>
-                <strong>I am seeking PhD opportunities starting in Fall 2026.</strong> Please feel free to reach out! Find me offline! -> <a href="#" id="locationTrigger">Where is Bohan?</a>
+                <strong>I am seeking PhD opportunities starting in Fall 2026.</strong> Please feel free to reach out! -> <a href="#" id="contactTrigger">Contact Info</a>. Find me offline! -> <a href="#" id="locationTrigger">Where is Bohan?</a>
               </p>
               <p style="text-align:center">
                 <a target="_blank" href="mailto:lyubh22@gmail.com"> Email</a> &nbsp;/&nbsp;
@@ -315,6 +315,26 @@
         }
       });
       
+      // --- Contact Info Modal Logic ---
+      const contactModal = document.getElementById('contactModal');
+      const contactTrigger = document.getElementById('contactTrigger');
+      const contactCloseBtn = contactModal.querySelector('.close-button');
+
+      function showContactModal() {
+        contactModal.style.display = 'block';
+      }
+
+      function hideContactModal() {
+        contactModal.style.display = 'none';
+      }
+
+      contactTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        showContactModal();
+      });
+
+      contactCloseBtn.addEventListener('click', hideContactModal);
+
       // --- Location Popup Logic ---
       const locationModal = document.getElementById('locationModal');
       const locationTrigger = document.getElementById('locationTrigger');
@@ -340,6 +360,9 @@
         if (event.target === bibtexModal) {
           hideBibtexModal();
         }
+        if (event.target === contactModal) {
+          hideContactModal();
+        }
         if (event.target === locationModal) {
           hideLocationModal();
         }
@@ -347,11 +370,16 @@
       
       // Optional: Close modals with Escape key
       document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape" && bibtexModal.style.display === 'block') {
-          hideBibtexModal();
-        }
-        if (event.key === "Escape" && locationModal.style.display === 'block') {
-          hideLocationModal();
+        if (event.key === "Escape") {
+          if (bibtexModal.style.display === 'block') {
+            hideBibtexModal();
+          }
+          if (contactModal.style.display === 'block') {
+            hideContactModal();
+          }
+          if (event.key === "Escape" && locationModal.style.display === 'block') {
+            hideLocationModal();
+          }
         }
       });
       
@@ -369,6 +397,8 @@
       }
     }
   </script>
+  
+  <!-- BibTeX Modal -->
   <div id="bibtexModal" class="modal">
     <div class="modal-content">
       <span class="close-button">&times;</span>
@@ -376,6 +406,19 @@
       <pre id="modalBibtexContent">BibTeX content will appear here.</pre>
       <button id="copyBibtexButton">Copy to Clipboard</button>
       <span id="copyFeedback" style="margin-left: 10px; color: green; display: none;">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Contact Info Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Contact Info</h2>
+      <p>
+        <strong>Email:</strong> <a target="_blank" href="mailto:lyubh22@gmail.com">lyubh22@gmail.com</a><br>
+        <strong>Wechat:</strong> 13120040612<br>
+        <strong>Twitter:</strong> <a href="https://x.com/Lyubh22">@Lyubh22</a>
+      </p>
     </div>
   </div>
 
