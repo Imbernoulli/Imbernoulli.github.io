@@ -145,7 +145,7 @@ span.highlight {
   padding: 25px;
   border: 1px solid #888;
   width: 85%; /* Responsive width */
-  max-width: 700px; /* Maximum width */
+  max-width: 320px; /* Maximum width */
   border-radius: 8px;
   position: relative;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -180,6 +180,7 @@ span.highlight {
 
 /* BibTeX Content Area */
 #modalBibtexContent {
+  max-width: 700px; /* Maximum width */
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 15px;
@@ -225,7 +226,6 @@ span.highlight {
 /* --- Location Modal Specific Styles --- */
 #locationModal .modal-content {
   text-align: center;
-  max-width: 320px;
 }
 
 #locationModal .modal-content h2 {
