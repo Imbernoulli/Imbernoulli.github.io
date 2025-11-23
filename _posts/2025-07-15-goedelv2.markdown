@@ -12,7 +12,7 @@ code: https://github.com/Goedel-LM/Goedel-Prover-V2
 website: http://blog.goedel-prover.com
 selected: true
 slides: https://icml.cc/virtual/2025/workshop/39979#wse-detail-48755
-youtube: 
+youtube: https://slideslive.com/39044176/goedelproverv2-the-strongest-opensource-theorem-prover-to-date
 highlight: true
 bibtex: |
     @article{lin2025goedelproverv2,
