@@ -9,7 +9,7 @@ authors: "<b>Bohan Lyu*</b>, Siqiao Huang*, Zichen Liang*, Qi-An Sun, Jiaming Zh
 venue: "<b>EMNLP 2025 (Main, meta score top 0.3%)</b>"
 arxiv: https://arxiv.org/abs/2502.11167
 code: https://github.com/Imbernoulli/SURGE
-website: 
+website: https://aclanthology.org/2025.emnlp-main.162/
 selected: true
 slides: 
 youtube:
