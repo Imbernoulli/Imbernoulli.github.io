@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Goedel-Prover-V2: The Strongest Open-Source Theorem Prover to Date"
+title:  "Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data Synthesis and Self-Correction"
 date:   2025-07-15 00:00:00 +00:00
 image: /images/goedel-v2.png
 categories: research

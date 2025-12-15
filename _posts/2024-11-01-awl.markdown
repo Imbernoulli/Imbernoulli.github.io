@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Adapting While Learning: Grounding LLMs for Scientific Problems with Intelligent Tool Usage Adaptation"
+title:  "Adapting While Learning: Grounding LLMs for Scientific Problems with Tool Usage Adaptation"
 date:   2024-11-01 00:00:00 +00:00
 image: /images/awl.png
 categories: research
