@@ -262,12 +262,12 @@ span.highlight {
 }
 /* --- End Location Modal Specific Styles --- */
 
-// 在 style.scss 底部添加
-.paper-row a {
-  color: inherit; // 或者指定颜色，如 #000
+a.author-link {
+  color: inherit; 
   text-decoration: none;
 }
-.paper-row a:hover {
-  color: #f09228; // 保持你原本的悬停橙色
-  text-decoration: underline;
+
+a.author-link:hover {
+  color: #f09228; 
+  text-decoration: none;
 }

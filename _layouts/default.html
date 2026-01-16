@@ -118,7 +118,7 @@
                 {% for coauthor in site.data.authors %}
                   {% assign name = coauthor[0] %}
                   {% assign url = coauthor[1] %}
-                  {% capture link %}<a href="{{ url }}" target="_blank">{{ name }}</a>{% endcapture %}
+                  {% capture link %}<a href="{{ url }}" target="_blank" class="author-link">{{ name }}</a>{% endcapture %}
                   {% assign formatted_authors = formatted_authors | replace: name, link %}
                 {% endfor %}
 
