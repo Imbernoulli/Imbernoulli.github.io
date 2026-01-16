@@ -114,7 +114,15 @@
               <div {% if post.highlight == true %}style="background-color: #e3f2fd; padding: 10px; border-radius: 5px;"{% endif %}>
                 <h3>{{post.title}}</h3>
                 <br>
-                {{post.authors}}
+                {% assign formatted_authors = post.authors %}
+                {% for coauthor in site.data.authors %}
+                  {% assign name = coauthor[0] %}
+                  {% assign url = coauthor[1] %}
+                  {% capture link %}<a href="{{ url }}" target="_blank">{{ name }}</a>{% endcapture %}
+                  {% assign formatted_authors = formatted_authors | replace: name, link %}
+                {% endfor %}
+
+                {{ formatted_authors }}
                 <br>
                 <em>{{post.venue}}</em>
                 <br>
