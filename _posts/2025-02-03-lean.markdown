@@ -4,7 +4,6 @@ title:  "Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Provi
 date:   2025-02-03 00:00:00 +00:00
 image: /images/lean.png
 categories: research
-author: "Yong Lin*, Shange Tang*, <b>Bohan Lyu</b>, Jiayun Wu, Hongzhou Lin, Kaiyu Yang, Jia Li, Mengzhou Xia, Danqi Chen, Sanjeev Arora, Chi Jin"
 authors: "Yong Lin*, Shange Tang*, <b>Bohan Lyu</b>, Jiayun Wu, Hongzhou Lin, Kaiyu Yang, Jia Li, Mengzhou Xia, Danqi Chen, Sanjeev Arora, Chi Jin"
 venue: "<b>COLM 2025</b>"
 arxiv: https://arxiv.org/abs/2502.07640

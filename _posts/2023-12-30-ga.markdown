@@ -4,7 +4,6 @@ title:  "Enhancing Open-Domain Task-Solving Capability of LLMs via Autonomous To
 date:   2023-12-30 00:00:00 +00:00
 image: /images/GA.png
 categories: research
-author: "<b>Bohan Lyu*</b>, Xin Cong*, Heyang Yu, Pan Yang, Cheng Qian, Zihe Wang, Yujia Qin, Yining Ye, Yaxi Lu, Chen Qian, Zhong Zhang, Yukun Yan, Yankai Lin, Zhiyuan Liu, Maosong Sun"
 authors: "<b>Bohan Lyu*</b>, Xin Cong*, Heyang Yu, Pan Yang, Cheng Qian, Zihe Wang, Yujia Qin, Yining Ye, Yaxi Lu, Chen Qian, Zhong Zhang, Yukun Yan, Yankai Lin, Zhiyuan Liu, Maosong Sun"
 venue: "<b>ACL 2025 (Main)</b>"
 arxiv: https://arxiv.org/abs/2312.17294

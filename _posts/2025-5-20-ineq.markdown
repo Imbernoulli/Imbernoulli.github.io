@@ -4,7 +4,6 @@ title:  "Ineq-Comp: Benchmarking Human-Intuitive Compositional Reasoning in Auto
 date:   2025-05-20 00:00:00 +00:00
 image: /images/ineq.png
 categories: research
-author: "Haoyu Zhao, Yihan Geng, Shange Tang, Yong Lin, <b>Bohan Lyu</b>, Hongzhou Lin, Chi Jin, Sanjeev Arora"
 authors: "Haoyu Zhao, Yihan Geng, Shange Tang, Yong Lin, <b>Bohan Lyu</b>, Hongzhou Lin, Chi Jin, Sanjeev Arora"
 venue: <b>NeurIPS 2025</b> D&B Track
 arxiv: https://arxiv.org/pdf/2505.12680

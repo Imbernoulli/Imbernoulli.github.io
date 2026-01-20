@@ -4,7 +4,6 @@ title:  "Adapting While Learning: Grounding LLMs for Scientific Problems with To
 date:   2024-11-01 00:00:00 +00:00
 image: /images/awl.png
 categories: research
-author: "<b>Bohan Lyu*</b>, Yadi Cao*, Duncan Watson-Parris, Leon Bergen, Taylor Berg-Kirkpatrick, Rose Yu"
 authors: "<b>Bohan Lyu*</b>, Yadi Cao*, Duncan Watson-Parris, Leon Bergen, Taylor Berg-Kirkpatrick, Rose Yu"
 venue: "<b>ICML 2025</b>, AAAI 2024 FSS (Oral)"
 arxiv: https://arxiv.org/abs/2411.00412

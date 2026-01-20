@@ -4,7 +4,6 @@ title:  "Goedel-Prover-V2: Scaling Formal Theorem Proving with Scaffolded Data S
 date:   2025-07-15 00:00:00 +00:00
 image: /images/goedel-v2.png
 categories: research
-author: "Yong Lin*, Shange Tang*, <b>Bohan Lyu*</b>, Ziran Yang*, Jui-Hui Chung*, Haoyu Zhao*, Lai Jiang*, Yihan Geng*, Jiawei Ge, Ximing Lu, Jingruo Sun, Jiayun Wu, Jiri Gesi, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin"
 authors: "Yong Lin*, Shange Tang*, <b>Bohan Lyu*</b>, Ziran Yang*, Jui-Hui Chung*, Haoyu Zhao*, Lai Jiang*, Yihan Geng*, Jiawei Ge, Ximing Lu, Jingruo Sun, Jiayun Wu, Jiri Gesi, David Acuna, Kaiyu Yang, Hongzhou Lin, Yejin Choi, Danqi Chen, Sanjeev Arora, Chi Jin"
 venue: "AI4MATH @ ICML 2025 (Oral)"
 arxiv: https://arxiv.org/abs/2508.03613
