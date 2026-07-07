@@ -1,0 +1,273 @@
+---
+---
+
+//
+// IMPORTS
+//
+
+//@import "reset";
+//@import "variables";
+// Syntax highlighting @import is at the bottom of this file
+
+/**************/
+/* BASE RULES */
+/**************/
+a {
+  color: #003262;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #FDB515;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+p,
+a {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+}
+
+strong {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-display: auto;
+}
+
+h2 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-display: auto;
+  font-weight: normal;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h3 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-display: auto;
+  padding: 0px;
+  margin: 0px;
+  display:inline; 
+}
+
+h1 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  font-display: auto;
+  text-align: center;
+  padding: 0px;
+  margin-block-start: 14px;
+  margin-block-end: 14px;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+.one {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+.two {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+.fade {
+  transition: opacity .2s ease-in-out;
+  -moz-transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+span.highlight {
+  background-color: #d5f9ff;
+}
+
+.paper-row {
+  transition: all 0.3s ease;
+}
+
+.unselected-paper {
+  display: none;
+}
+
+#expandBtn {
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+}
+
+#expandBtn:hover {
+  background: #f0f0f0;
+}
+
+// Settled on moving the import of syntax highlighting to the bottom of the CSS
+// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+//@import "highlights";
+//@import "svg-icons";
+
+/* --- BibTeX Modal Styles --- */
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.6); /* Dim background */
+  padding-top: 60px; /* Location of the box */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto; /* 5% from the top and centered */
+  padding: 25px;
+  border: 1px solid #888;
+  width: 85%; /* Responsive width */
+  max-width: 700px; /* Maximum width */
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  font-family: 'Lato', Verdana, Helvetica, sans-serif; // Match your site font
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px; // Adjust as needed
+  display: block; // Override inline display if set globally for h2
+  text-align: left; // Override center if needed
+}
+
+/* Close Button */
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* BibTeX Content Area */
+#modalBibtexContent {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 15px;
+  white-space: pre-wrap;   /* CSS3, wraps text preserving whitespace */
+  word-wrap: break-word; /* IE 5.5+, breaks long words */
+  max-height: 400px;     /* Limit height */
+  overflow-y: auto;      /* Add scrollbar if content overflows */
+  font-family: 'Courier New', Courier, monospace; /* Monospace for code */
+  font-size: 13px;
+  line-height: 1.5;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Copy Button Styling */
+#copyBibtexButton {
+  background-color: #2B64D9; // Match link color
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+#copyBibtexButton:hover {
+  background-color: #f09228; // Match link hover color
+}
+
+/* BibTeX trigger link style (optional) */
+.bibtex-trigger {
+  cursor: pointer; // Indicate it's clickable
+  // Add other styles if desired, e.g., border-bottom: 1px dashed #2B64D9;
+}
+
+/* --- End BibTeX Modal Styles --- */
+
+/* --- Contact Info Modal Specific Styles --- */
+#contactModal .modal-content {
+  text-align: center;
+  max-width: 320px;
+}
+
+#contactModal .modal-content h2 {
+  text-align: center; /* Center the title for the contact popup */
+  margin-bottom: 10px;
+}
+
+#contactModal .modal-content p {
+  text-align: left; /* Keep text left-aligned within the modal */
+  margin-bottom: 10px;
+}
+/* --- End Contact Info Modal Specific Styles --- */
+
+/* --- Location Modal Specific Styles --- */
+#locationModal .modal-content {
+  text-align: center;
+  max-width: 320px;
+}
+
+#locationModal .modal-content h2 {
+  text-align: center; /* Center the title for the location popup */
+  margin-bottom: 10px;
+}
+
+#locationModal .modal-content p,
+#locationModal .modal-content ul {
+  text-align: left; /* Keep text left-aligned within the modal */
+  margin-bottom: 10px;
+}
+
+#locationModal .modal-content ul {
+    list-style-type: disc; /* Use bullet points for the list */
+    padding-left: 20px; /* Indent the list */
+}
+/* --- End Location Modal Specific Styles --- */
+
+a.author-link {
+  color: inherit; 
+  text-decoration: none;
+}
+
+a.author-link:hover {
+  color: #FDB515; 
+  text-decoration: none;
+}

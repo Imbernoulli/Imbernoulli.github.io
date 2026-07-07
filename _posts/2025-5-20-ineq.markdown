@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Ineq-Comp: Benchmarking Human-Intuitive Compositional Reasoning in Automated Theorem Proving on Inequalities"
+date:   2025-05-20 00:00:00 +00:00
+image: /images/ineq.png
+categories: research
+authors: "Haoyu Zhao, Yihan Geng, Shange Tang, Yong Lin, <b>Bohan Lyu</b>, Hongzhou Lin, Chi Jin, Sanjeev Arora"
+venue: <b>NeurIPS 2025</b> D&B Track
+arxiv: https://arxiv.org/pdf/2505.12680
+code: https://github.com/haoyuzhao123/LeanIneqComp
+website: 
+selected: false
+highlight: false
+bibtex: |
+    @article{zhao2025ineq,
+        title={Ineq-Comp: Benchmarking Human-Intuitive Compositional Reasoning in Automated Theorem Proving on Inequalities},
+        author={Zhao, Haoyu and Geng, Yihan and Tang, Shange and Lin, Yong and Lyu, Bohan and Lin, Hongzhou and Jin, Chi and Arora, Sanjeev},
+        journal={arXiv preprint arXiv:2505.12680},
+        year={2025}
+    }
+---
+LLM-based proof assistants struggle with compositional reasoning in inequalities. The Ineq-Comp benchmark reveals that even strong models like DeepSeek-Prover-V2-7B falter, despite having proofs of subparts. This highlights a key gap between AI and human mathematical intuition.

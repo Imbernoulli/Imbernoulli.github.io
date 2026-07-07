@@ -1,0 +1,22 @@
+---
+layout: post
+title:  "Agents' Last Exam"
+date:   2026-06-03 00:00:00 +00:00
+image: /images/ale.png
+categories: research
+authors: "<b>ALE Team</b>"
+venue: "arXiv 2026"
+arxiv: https://arxiv.org/abs/2606.05405
+code: https://github.com/rdi-berkeley/agents-last-exam
+website: https://agents-last-exam.org
+selected: true
+highlight: false
+bibtex: |
+    @article{sun2026agents,
+        title={Agents' Last Exam},
+        author={Sun, Yiyou and Han, Xinyang and Zhang, Weichen and Pang, Yuanbo and Wang, Tianyu and Cao, Yuhan and Huang, Yixiao and Duroiu, Chris and Zhang, Haoyun and Lin, Jeffrey and others},
+        journal={arXiv preprint arXiv:2606.05405},
+        year={2026}
+    }
+---
+We introduce Agents' Last Exam (ALE), a benchmark of 1K+ long-horizon, economically valuable, real-world tasks across 55 subfields and 13 industry clusters, and find that current frontier agents remain far from saturating the hardest tier.

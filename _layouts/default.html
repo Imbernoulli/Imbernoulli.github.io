@@ -1,0 +1,485 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-E00L9PT3V9');
+  </script>
+  <title>{{ site.name }}</title>
+
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+  <meta name="author" content="{{ site.name }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+    type="text/css">
+
+</head>
+
+<body>
+  <table
+    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:65%;vertical-align:middle">
+              <h1>
+                Bohan Lyu
+              </h1>
+              <p>
+                I'm an incoming PhD student at <img src="images/berkeley.png" alt="UC Berkeley" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://eecs.berkeley.edu">UC Berkeley EECS</a>. I received my double bachelor's degree in Computer Science and Economics from <img src="images/tsinghua.png" alt="Tsinghua" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a> in 2026.
+              </p>
+              <p>
+                Now I'm working on self-evolving intelligence at <img src="images/princeton.png" alt="Princeton" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://pli.princeton.edu">PLI, Princeton</a>, advised by Prof. <a
+                href="https://sites.google.com/view/cjin/home">Prof. Chi Jin</a>. Prior to it, I've worked in <a href="https://nlp.csai.tsinghua.edu.cn">Tsinghua NLP</a> Lab, advised by <a
+                  href="https://nlp.csai.tsinghua.edu.cn/~lzy/">Prof. Zhiyuan Liu</a>, and Rose-STL-Lab, <a
+                  href="https://www.ucsd.edu" style="color: #1B264A;"><img src="images/ucsd.png" alt="UCSD" style="height:16px;vertical-align:middle;margin-right:3px;">UCSD</a>, advised by <a
+                  href="https://roseyu.com">Prof. Rose Yu</a>.
+              </p>
+              <!-- <p>
+                I'm serving as reviewers of ICLR, NeurIPS, ARR, and relevant workshops.
+              </p> -->
+              <p>
+                Feel free to reach out if you want to chat about research or collaboration!
+              </p>
+              <!-- <p>
+                <strong>I am seeking industrial internship opportunities.</strong>
+              </p> -->
+              <p style="text-align:center">
+                <a href="#" id="contactTrigger">Contact Info</a> &nbsp;/&nbsp;
+                <!-- <a href="https://github.com/Imbernoulli">GitHub</a> &nbsp;/&nbsp; -->
+                <!-- <a href="http://bohanlyu.com/pdfs/Bohan_s_Resume_New.pdf"> CV </a>&nbsp;/&nbsp; -->
+                <a href="https://scholar.google.com/citations?user=vMMFoTsAAAAJ&hl=en">Google Scholar</a> &nbsp;/&nbsp;
+                <a href="https://x.com/Lyubh22"> Twitter </a> &nbsp;/&nbsp;
+                <a href="#" id="locationTrigger">Where is Bohan?</a>
+              </p>
+            </td>
+            <td style="padding:2.5%;width:35%;max-width:35%">
+              <h1>
+                &nbsp;&nbsp;&nbsp;
+              </h1>
+              <img style="width:100%;max-width:100%" alt="profile photo" src="images/blueMe2.png">
+            </td>
+          </tr>
+        </table>
+
+        <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2 id="News">News</h2>
+              <ul>
+                <li> <b>2026-05</b> Releasing <i>MLS-Bench</i>!</li>
+                <!-- <li> <b>2026-03</b> Starting my internship at <img src="images/Kimi.png" alt="Kimi" style="height:16px;vertical-align:middle;margin-right:3px;"><b>Kimi</b>! -->
+                <li> <b>2025-07</b> Releasing <i>Goedel-Prover-V2</i>!</li>
+                <li> <b>2025-05</b> <i>Enhancing LLM's Capabilities in Open Domains via Autonomous Tool Integration</i> is accepted to <b>ACL 2025 Main</b>!</li>
+                <li> <b>2025-05</b> <i>Adapting while Learning</i> is accepted to <b>ICML 2025</b>!</li>
+                <!-- <li> <b>2024-06</b> My team got <b>No.1</b> out of 600+ teams at a Baidu Inc. Data Mining Competition.
+                </li> -->
+                <li> <b>2024-05</b> Awarded Spark Scientific and Technological Innovation Fellowship (<b>Top 1%</b> in Tsinghua). </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+        <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2 id="Research">Research <span style="font-size: 14px;">(* indicates equal contribution, <span style="background-color: #e3f2fd;">highlight</span> indicates representative papers)</span></h2>
+              <p>
+                <!-- I'm interested in AI for MATH, ML for NLP and their applications. -->
+                <button onclick="togglePapers()" id="expandBtn" style="float:right;margin-left:10px;">Show All</button>
+              </p>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          {% for post in site.posts %}
+          {% for cat in post.categories %}
+          {% if cat == 'research' %}
+          <tr class="paper-row {% if post.selected != true %}unselected-paper{% endif %}" {% if post.selected != true %}style="display:none" {% endif %}>
+            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+              <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            </td>
+            <td style="padding:2.5%;width:75%;vertical-align:middle">
+              <div {% if post.highlight == true %}style="background-color: #e3f2fd; padding: 10px; border-radius: 5px;"{% endif %}>
+                <h3>{{post.title}}</h3>
+                <br>
+                {% assign formatted_authors = post.authors %}
+                {% for coauthor in site.data.authors %}
+                  {% assign name = coauthor[0] %}
+                  {% assign url = coauthor[1] %}
+                  {% capture link %}<a href="{{ url }}" target="_blank" class="author-link">{{ name }}</a>{% endcapture %}
+                  {% assign formatted_authors = formatted_authors | replace: name, link %}
+                {% endfor %}
+
+                {{ formatted_authors }}
+                <br>
+                <em>{{post.venue}}</em>
+                <br>
+                {% if post.arxiv %}
+                <a href="{{post.arxiv}}">arXiv</a> /
+                {% endif %}
+                {% if post.video %}
+                <a href="{{post.video}}">Video</a> /
+                {% endif %}
+                {% if post.code %}
+                <a href="{{post.code}}">Code</a> /
+                {% endif %}
+                {% if post.poster %}
+                <a href="{{post.poster}}">Poster</a> /
+                {% endif %}
+                {% if post.slides %}
+                <a href="{{post.slides}}">Slides</a> /
+                {% endif %}
+                {% if post.website %}
+                <a href="{{post.website}}">Website</a> /
+                {% endif %}
+                {% if post.youtube %}
+                <a href="{{post.youtube}}">YouTube</a> /
+                {% endif %}
+                {% if post.bibtex %}
+                <a href="#" class="bibtex-trigger" data-bibtex="{{ post.bibtex | escape_once }}">BibTeX</a> /
+                {% endif %}
+                <p></p>
+                {{ post.excerpt }}
+              </div>
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+        </table>
+
+        <table
+    style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr>
+      <td style="padding:2.5%;width:100%;vertical-align:middle">
+        <h2 id="Talks">Talks</h2>
+        <p style="margin-bottom:4px"><i>Towards AI Systems That Build Better AI</i> &nbsp;<a href="https://www.bilibili.com/video/BV1maJJ6DE7L">[Video (in Chinese)]</a></p>
+        <ul style="margin-top:0;list-style:none;padding-left:1em">
+          <li><span style="display:inline-block;width:72px"><b>2026-05</b></span><img src="images/tsinghua.png" alt="Tsinghua" style="height:16px;vertical-align:middle;margin-right:3px;">Tsinghua University</li>
+          <li><span style="display:inline-block;width:72px"><b>2026-05</b></span><img src="images/Kimi.png" alt="Moonshot AI" style="height:16px;vertical-align:middle;margin-right:3px;">Moonshot AI (Kimi)</li>
+          <li><span style="display:inline-block;width:72px"><b>2026-05</b></span><img src="images/zhipu.png" alt="Zhipu AI" style="height:16px;vertical-align:middle;margin-right:3px;">Zhipu AI (GLM)</li>
+          <li><span style="display:inline-block;width:72px"><b>2026-06</b></span><img src="images/pku.png" alt="Peking University" style="height:16px;vertical-align:middle;margin-right:3px;">Peking University</li>
+          <li><span style="display:inline-block;width:72px"><b>2026-06</b></span><img src="images/tencent.png" alt="Tencent" style="height:16px;vertical-align:middle;margin-right:3px;">Tencent</li>
+        </ul>
+        <p style="margin-bottom:4px"><i>Fantastic CS PhD Opportunities and Where to Find Them</i> &nbsp;<a href="pdfs/phd.pdf">[Slides]</a></p>
+        <ul style="margin-top:0;list-style:none;padding-left:1em">
+          <li><span style="display:inline-block;width:72px"><b>2026-03</b></span><img src="images/tsinghua.png" alt="Tsinghua" style="height:16px;vertical-align:middle;margin-right:3px;">Tsinghua University</li>
+        </ul>
+        <p style="margin-bottom:4px"><i>The Curious Landscape of LLM Reasoning: An Overview of Techniques, Research Directions, and Challenges</i> &nbsp;<a href="pdfs/curiousLLMreasoning.pdf">[Slides]</a></p>
+        <ul style="margin-top:0;list-style:none;padding-left:1em">
+          <li><span style="display:inline-block;width:72px"><b>2025-10</b></span><img src="images/tsinghua.png" alt="Tsinghua" style="height:16px;vertical-align:middle;margin-right:3px;">Tsinghua University</li>
+        </ul>
+        <p style="margin-bottom:4px"><i>LLM Reasoning: From Informal to Formal</i> &nbsp;<a href="pdfs/informal2formal.pdf">[Slides]</a></p>
+        <ul style="margin-top:0;list-style:none;padding-left:1em">
+          <li><span style="display:inline-block;width:72px"><b>2025-07</b></span><img src="images/tsinghua.png" alt="Tsinghua" style="height:16px;vertical-align:middle;margin-right:3px;">Tsinghua University</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+        <table
+    style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr>
+      <td style="padding:2.5%;width:100%;vertical-align:middle">
+        <h2 id="Resources">Resources</h2>
+        <p>Some tools and resources I've developed for the research community:</p>
+        <ul>
+          <li>
+            <strong>jload</strong> - A Python package for convenient JSON/JSONL data loading and saving.
+            <a href="https://badge.fury.io/py/jload">
+              <img src="https://badge.fury.io/py/jload.svg" alt="PyPI version">
+            </a>
+          </li>
+          <li>
+            <strong>vlllm</strong> - A Python package for convenient text generation with multiprocessing support.
+            <a href="https://badge.fury.io/py/vlllm">
+              <img src="https://badge.fury.io/py/vlllm.svg" alt="PyPI version">
+            </a>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <table
+    style="width:100%;max-width:100px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table
+          style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:50%;vertical-align:middle">
+              <script type="text/javascript" id="clstr_globe"
+                src="//clustrmaps.com/globe.js?d=QKiNuRDR5yLKWsUrIdNHRh5T7VUFyownHrMAfmWA900"></script>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <br>
+  <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+    <tr>
+      <td style="padding:0px">
+        <br>
+        <p style="text-align:center;font-size:small;">
+          Design and source code from <a style="font-size:small;" href="https://leonidk.com">Leonid Keselman's website</a>
+        </p>
+      </td>
+    </tr>
+  </table>
+
+        <br>
+      </td>
+    </tr>
+  </table>
+  <script>
+    let expanded = false;
+    function togglePapers() {
+      const btn = document.getElementById('expandBtn');
+      const papers = document.getElementsByClassName('unselected-paper');
+
+      expanded = !expanded;
+
+      for (let paper of papers) {
+        paper.style.display = expanded ? 'table-row' : 'none';
+      }
+
+      btn.textContent = expanded ? 'Show Less' : 'Show All';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get modal elements
+      const bibtexModal = document.getElementById('bibtexModal');
+      const bibtexModalContentEl = document.getElementById('modalBibtexContent');
+      const bibtexCloseBtn = bibtexModal.querySelector('.close-button');
+      const copyBtn = document.getElementById('copyBibtexButton');
+      const copyFeedbackEl = document.getElementById('copyFeedback');
+      
+      // Get all BibTeX trigger links
+      const bibtexTriggers = document.querySelectorAll('.bibtex-trigger');
+      
+      // Function to show the BibTeX modal
+      function showBibtexModal(bibtexContent) {
+        // Trim leading/trailing whitespace and set content
+        bibtexModalContentEl.textContent = bibtexContent.trim();
+        bibtexModal.style.display = 'block';
+        copyFeedbackEl.style.display = 'none'; // Hide feedback initially
+        copyBtn.disabled = false; // Ensure button is enabled
+      }
+      
+      // Function to hide the BibTeX modal
+      function hideBibtexModal() {
+        bibtexModal.style.display = 'none';
+        bibtexModalContentEl.textContent = ''; // Clear content for next time
+      }
+      
+      // Add click listeners to all BibTeX trigger links
+      bibtexTriggers.forEach(trigger => {
+        trigger.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default link behavior
+          const bibtex = this.dataset.bibtex;
+          if (bibtex) {
+            showBibtexModal(bibtex);
+          } else {
+            console.warn("BibTeX data not found for this link.");
+          }
+        });
+      });
+      
+      // Add listener to BibTeX close button
+      bibtexCloseBtn.addEventListener('click', hideBibtexModal);
+      
+      // Add listener for copy button
+      copyBtn.addEventListener('click', function() {
+        const textToCopy = bibtexModalContentEl.textContent;
+      
+        // Use the modern Clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(textToCopy).then(() => {
+            // Success feedback
+            copyFeedbackEl.style.display = 'inline'; // Show feedback
+            copyBtn.disabled = true; // Temporarily disable button
+            setTimeout(() => {
+                copyFeedbackEl.style.display = 'none';
+                copyBtn.disabled = false; // Re-enable button
+            }, 2000); // Reset after 2 seconds
+          }).catch(err => {
+            console.error('Async: Could not copy text: ', err);
+            alert('Failed to copy automatically. Please select and copy manually.'); // Fallback
+          });
+        } else {
+          // Fallback for older browsers or non-secure contexts (less reliable)
+          try {
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            textArea.style.position = "fixed"; // Prevent scrolling to bottom
+            textArea.style.opacity = "0";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+          
+            // Success feedback
+            copyFeedbackEl.style.display = 'inline';
+            copyBtn.disabled = true;
+            setTimeout(() => {
+                copyFeedbackEl.style.display = 'none';
+                copyBtn.disabled = false;
+            }, 2000);
+          } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+            alert('Failed to copy automatically. Please select and copy manually.');
+          }
+        }
+      });
+      
+      // --- Contact Info Modal Logic ---
+      const contactModal = document.getElementById('contactModal');
+      const contactTrigger = document.getElementById('contactTrigger');
+      const contactCloseBtn = contactModal.querySelector('.close-button');
+
+      function showContactModal() {
+        contactModal.style.display = 'block';
+      }
+
+      function hideContactModal() {
+        contactModal.style.display = 'none';
+      }
+
+      contactTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        showContactModal();
+      });
+
+      contactCloseBtn.addEventListener('click', hideContactModal);
+
+      // --- Location Popup Logic ---
+      const locationModal = document.getElementById('locationModal');
+      const locationTrigger = document.getElementById('locationTrigger');
+      const locationCloseBtn = locationModal.querySelector('.close-button');
+
+      function showLocationModal() {
+        locationModal.style.display = 'block';
+      }
+
+      function hideLocationModal() {
+        locationModal.style.display = 'none';
+      }
+
+      locationTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
+        showLocationModal();
+      });
+
+      locationCloseBtn.addEventListener('click', hideLocationModal);
+
+      // Close modals when clicking outside their content
+      window.addEventListener('click', function(event) {
+        if (event.target === bibtexModal) {
+          hideBibtexModal();
+        }
+        if (event.target === contactModal) {
+          hideContactModal();
+        }
+        if (event.target === locationModal) {
+          hideLocationModal();
+        }
+      });
+      
+      // Optional: Close modals with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+          if (bibtexModal.style.display === 'block') {
+            hideBibtexModal();
+          }
+          if (contactModal.style.display === 'block') {
+            hideContactModal();
+          }
+          if (event.key === "Escape" && locationModal.style.display === 'block') {
+            hideLocationModal();
+          }
+        }
+      });
+      
+    });
+
+    function toggleContactInfo() {
+      var contactInfo = document.getElementById('contactInfo');
+      var icon = document.querySelector('.toggleIcon');
+      if (contactInfo.style.display === 'none') {
+        contactInfo.style.display = 'block';
+        icon.className = 'toggleIcon open';
+      } else {
+        contactInfo.style.display = 'none';
+        icon.className = 'toggleIcon closed';
+      }
+    }
+  </script>
+  
+  <!-- BibTeX Modal -->
+  <div id="bibtexModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Please cite if you find it helpful.</h2>
+      <pre id="modalBibtexContent">BibTeX content will appear here.</pre>
+      <button id="copyBibtexButton">Copy to Clipboard</button>
+      <span id="copyFeedback" style="margin-left: 10px; color: green; display: none;">Copied!</span>
+    </div>
+  </div>
+
+  <!-- Contact Info Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Contact Info</h2>
+      <p>
+        <strong>Email:</strong> <a target="_blank" href="mailto:lyubh22@gmail.com">lyubh22@gmail.com</a><br>
+        <strong>Wechat:</strong> <a href="/images/wechat.jpg">13120040612</a><br>
+        <strong>Twitter:</strong> <a href="https://x.com/Lyubh22">@Lyubh22</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Location Popup Modal -->
+  <div id="locationModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Where is Bohan?</h2>
+      <p>I'm currently interning in <strong>Beijing, China</strong>.</p>
+      <!-- <p>I will attend:</p>
+      <ul>
+        <li>ICLR 2100 in <strong>Olympus Mons, Mars</strong>.</li>
+      </ul>
+      <p>Looking forward to meeting you there!</p> -->
+      <p>Past footprints:</p>
+      <ul>
+        <li>NeurIPS 2025 in 🇺🇸 <strong>San Diego, USA</strong>.</li>
+        <li>EMNLP 2025 in 🇨🇳 <strong>Suzhou, China</strong>.</li>
+        <li>ACL 2025 in 🇦🇹 <strong>Vienna, Austria</strong>.</li>
+        <li>ICML 2025 in 🇨🇦 <strong>Vancouver, Canada</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>

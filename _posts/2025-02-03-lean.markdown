@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving"
+date:   2025-02-03 00:00:00 +00:00
+image: /images/lean.png
+categories: research
+authors: "Yong Lin*, Shange Tang*, <b>Bohan Lyu</b>, Jiayun Wu, Hongzhou Lin, Kaiyu Yang, Jia Li, Mengzhou Xia, Danqi Chen, Sanjeev Arora, Chi Jin"
+venue: "<b>COLM 2025</b>"
+arxiv: https://arxiv.org/abs/2502.07640
+code: https://github.com/Goedel-LM
+website: https://goedel-lm.github.io
+selected: true
+slides: 
+youtube: https://www.youtube.com/watch?v=pI7jc-czdfM&t=923s
+highlight:
+bibtex: |
+    @misc{lin2025goedelprover,
+        title={Goedel-Prover: A Frontier Model for Open-Source Automated Theorem Proving},
+        author={Yong Lin and Shange Tang and Bohan Lyu and Jiayun Wu and Hongzhou Lin and Kaiyu Yang and Jia Li and Mengzhou Xia and Danqi Chen and Sanjeev Arora and Chi Jin},
+        year={2025},
+        eprint={2502.07640},
+        archivePrefix={arXiv},
+        primaryClass={cs.AI},
+        booktitle={Second Conference on Language Modeling},
+        year={2025},
+        url={https://openreview.net/forum?id=x2y9i2HDjD}
+    }
+---
+The new 7B Goedel-Prover sets a new state-of-the-art in open-source automated theorem proving, beating previous records with a 7% improvement on miniF2F, topping the PutnamBench Leaderboard, and solving nearly twice as many problems on Lean Workbook.

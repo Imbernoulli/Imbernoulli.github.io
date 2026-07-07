@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "MLS-Bench: A Holistic and Rigorous Assessment of AI Systems on Building Better AI"
+date:   2026-05-09 00:00:00 +00:00
+image: /images/mlsbench.png
+categories: research
+authors: "<b>Bohan Lyu*</b>, Yucheng Yang*, Siqiao Huang*, Jiaru Zhang*, Qixin Xu*, Xinghan Li*, Xinyang Han*, Yicheng Zhang*, Huaqing Zhang*, Runhan Huang, Kaicheng Yang, Zitao Chen, Wentao Guo, Junlin Yang, Xinyue Ai, Wenhao Chai, Yadi Cao, Ziran Yang, Kun Wang, Dapeng Jiang, Huan-ang Gao, Shange Tang, Chengshuai Shi, Simon S. Du, Max Simchowitz, Jiantao Jiao, Dawn Song, Chi Jin"
+venue: "AI4Math @ ICML2026 (Honorable Mention Award)"
+arxiv: https://arxiv.org/abs/2605.08678
+code: https://github.com/Imbernoulli/MLS-Bench
+website: https://mls-bench.com
+selected: true
+highlight: true
+bibtex: |
+    @article{lyu2026mlsbench,
+        title={MLS-Bench: A Holistic and Rigorous Assessment of AI Systems on Building Better AI},
+        author={Bohan Lyu and Yucheng Yang and Siqiao Huang and Jiaru Zhang and Qixin Xu and Xinghan Li and Xinyang Han and Yicheng Zhang and Huaqing Zhang and Runhan Huang and Kaicheng Yang and Zitao Chen and Wentao Guo and Junlin Yang and Xinyue Ai and Wenhao Chai and Yadi Cao and Ziran Yang and Kun Wang and Dapeng Jiang and Huan-ang Gao and Shange Tang and Chengshuai Shi and Simon S. Du and Max Simchowitz and Jiantao Jiao and Dawn Song and Chi Jin},
+        year={2026},
+        journal={arXiv preprint arXiv:2605.08678},
+        url={https://arxiv.org/abs/2605.08678},
+    }
+---
+We introduce MLS-Bench, a benchmark of 140 tasks across 12 domains for evaluating whether AI systems can invent generalizable and scalable ML methods, and find that current agents remain far from reliably surpassing human-designed methods.

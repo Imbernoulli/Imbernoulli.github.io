@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "SURGE: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors"
+date:   2025-02-16 00:00:00 +00:00
+image: /images/surge.png
+categories: research
+authors: "<b>Bohan Lyu*</b>, Siqiao Huang*, Zichen Liang*"
+venue: "<b>EMNLP 2025 (Main, meta score top 0.3%)</b>"
+arxiv: https://arxiv.org/abs/2502.11167
+code: https://github.com/Imbernoulli/SURGE
+website: https://aclanthology.org/2025.emnlp-main.162/
+selected: true
+slides: 
+youtube:
+highlight: false
+bibtex: |
+    @inproceedings{lyu2025surge,
+        title={SURGE: On the Potential of Large Language Models as General-Purpose Surrogate Code Executors},
+        author={Lyu, Bohan and Huang, Siqiao and Liang, Zichen and Sun, Qian and Zhang, Jiaming},
+        booktitle={Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+        pages={3268--3308},
+        year={2025}
+    }
+---
+SURGE evaluates LLMs' ability to predict code execution across eight key areas. While they show promise, limitations prevent general-purpose surrogate execution. <u>This is an extension of a course project that does not reflect the focus of my research.</u>
