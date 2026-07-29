@@ -11,6 +11,9 @@ name: Bohan Lyu
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: favicon.ico
 
+# Source-code toggle: set to false before pushing to hide all Kimi/Moonshot/Zhipu/GLM related content.
+show_sensitive_content: true
+
 #
 # Flags below are optional
 #
