@@ -12,7 +12,7 @@ name: Bohan Lyu
 avatar: favicon.ico
 
 # Source-code toggle: set to false before pushing to hide all Kimi/Moonshot/Zhipu/GLM related content.
-show_sensitive_content: true
+show_sensitive_content: false
 
 #
 # Flags below are optional
