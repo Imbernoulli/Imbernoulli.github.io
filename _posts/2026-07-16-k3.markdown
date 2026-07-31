@@ -6,6 +6,7 @@ image: /images/k3.png
 categories: research
 authors: "<b>Kimi K3 Team</b>"
 venue: "Technical Report, 2026"
+arxiv: https://arxiv.org/abs/2607.24653
 website: https://www.kimi.com/blog/kimi-k3
 code: https://github.com/MoonshotAI/Kimi-K3
 huggingface: https://huggingface.co/moonshotai/Kimi-K3
