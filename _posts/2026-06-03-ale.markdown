@@ -5,11 +5,11 @@ date:   2026-06-03 00:00:00 +00:00
 image: /images/ale.png
 categories: research
 authors: "<b>ALE Team</b>"
-venue: "NeurIPS 2026 E&D Track"
+venue: "<b>NeurIPS 2026 E&D Track</b>"
 arxiv: https://arxiv.org/abs/2606.05405
 code: https://github.com/rdi-berkeley/agents-last-exam
 website: https://agents-last-exam.org
-selected: true
+selected: false
 highlight: false
 bibtex: |
     @article{sun2026agents,
