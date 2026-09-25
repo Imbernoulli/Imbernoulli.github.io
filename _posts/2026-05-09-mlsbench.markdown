@@ -5,7 +5,7 @@ date:   2026-05-09 00:00:00 +00:00
 image: /images/mlsbench.png
 categories: research
 authors: "<b>Bohan Lyu*</b>, Yucheng Yang*, Siqiao Huang*, Jiaru Zhang*, Qixin Xu*, Xinghan Li*, Xinyang Han*, Yicheng Zhang*, Huaqing Zhang*, Runhan Huang, Kaicheng Yang, Zitao Chen, Wentao Guo, Junlin Yang, Xinyue Ai, Wenhao Chai, Yadi Cao, Ziran Yang, Kun Wang, Dapeng Jiang, Huan-ang Gao, Shange Tang, Chengshuai Shi, Simon S. Du, Max Simchowitz, Jiantao Jiao, Dawn Song, Chi Jin"
-venue: "<b>NeurIPS 2026 E&B Track (Oral)</b>"
+venue: "<b>NeurIPS 2026 E&B Track (Oral, Top 0.4%)</b>"
 arxiv: https://arxiv.org/abs/2605.08678
 code: https://github.com/Imbernoulli/MLS-Bench
 website: https://mls-bench.com
