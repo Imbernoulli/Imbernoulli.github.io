@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "Scaling Online Exploration for Robot Agents"
+date:   2026-10-14 00:00:00 +00:00
+image: /images/rax.png
+categories: research
+authors: "Runhan Huang*, Xiangcheng Zhang*, Haoyu Chen*, Yitong Li*, Yen-Jen Wang*, <b>Bohan Lyu*</b>, Haotian Ye, Chuye Hong, Yixuan Wang, Chloe Su, Haoyu Xiong, Yangzhen Wu, Enze Xie, Travis Manderson, Stefano Ermon, Pieter Abbeel, Antonio Torralba, Dawn Song, Weirui Ye, Yilun Du"
+venue: "Preprint, 2026"
+paper: https://robot-agent-exploration.com/rax.pdf
+code: https://github.com/robot-agent-exploration/rax
+website: https://robot-agent-exploration.com
+selected: true
+highlight: false
+---
+We introduce RAX (Robot Agent eXploration), an open-source framework that scales online exploration for robot agents: a frozen LLM coding agent acquires online experience and compiles it into executable programs, learning new tasks with no demonstrations, no teleoperation, and no policy training.

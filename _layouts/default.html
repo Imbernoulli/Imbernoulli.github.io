@@ -33,15 +33,16 @@
         <table
           style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
+            <td style="padding:2.5%;width:75%;vertical-align:middle">
               <h1>
                 Bohan Lyu
               </h1>
               <p>
-                I'm a PhD student at <img src="images/berkeley.png" alt="UC Berkeley" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://eecs.berkeley.edu">UC Berkeley EECS</a>. Now I'm interested in <strong>AI for Research</strong>, especially in pushing it beyond the digital world into the physical world, and in accelerating biological discovery — ultimately toward curing cancer.
+                I'm a PhD student at <img src="images/berkeley.png" alt="UC Berkeley" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://eecs.berkeley.edu">UC Berkeley EECS</a>.
+                <!-- Now I'm interested in <strong>AI for Research</strong>, especially in pushing it beyond the digital world into the physical world, and in accelerating biological discovery — ultimately toward curing cancer. -->
               </p>
               <p>
-                Previously, I worked on AI for Math and self-evolving intelligence at <img src="images/princeton.png" alt="Princeton" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://pli.princeton.edu">PLI, Princeton</a>, advised by <a href="https://sites.google.com/view/cjin/home">Prof. Chi Jin</a>. I've also worked in <a href="https://nlp.csai.tsinghua.edu.cn">Tsinghua NLP</a> Lab, advised by <a href="https://nlp.csai.tsinghua.edu.cn/~lzy/">Prof. Zhiyuan Liu</a>, and Spatiotemporal Learning Lab, <a href="https://www.ucsd.edu" style="color: #1B264A;"><img src="images/ucsd.png" alt="UCSD" style="height:16px;vertical-align:middle;margin-right:3px;">UCSD</a>, advised by <a href="https://roseyu.com">Prof. Rose Yu</a>.
+                Previously, I worked on AI for Math and self-improving AI systems at <img src="images/princeton.png" alt="Princeton" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://pli.princeton.edu">PLI, Princeton</a>, advised by <a href="https://sites.google.com/view/cjin/home">Prof. Chi Jin</a>. I've also worked in <a href="https://nlp.csai.tsinghua.edu.cn">Tsinghua NLP</a> Lab, advised by <a href="https://nlp.csai.tsinghua.edu.cn/~lzy/">Prof. Zhiyuan Liu</a>, and Spatiotemporal Learning Lab, <a href="https://www.ucsd.edu" style="color: #1B264A;"><img src="images/ucsd.png" alt="UCSD" style="height:16px;vertical-align:middle;margin-right:3px;">UCSD</a>, advised by <a href="https://roseyu.com">Prof. Rose Yu</a>.
               </p>
               <p>
                 I received my double bachelor's degree in Computer Science and Economics from <img src="images/tsinghua.png" alt="Tsinghua" style="height:16px;vertical-align:middle;margin-right:3px;"><a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a> in 2026.
@@ -67,7 +68,7 @@
                 <a href="#" id="locationTrigger">Where is Bohan?</a>
               </p>
             </td>
-            <td style="padding:2.5%;width:30%;max-width:30%">
+            <td style="padding:2.5%;width:25%;max-width:25%">
               <h1>
                 &nbsp;&nbsp;&nbsp;
               </h1>
@@ -82,10 +83,10 @@
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2 id="News">News</h2>
               <ul>
+                <li> <b>2026-10</b> <i>MLS-Bench</i> is accepted as an <b>Oral</b> at the <b>NeurIPS 2026 E&D Track</b> (15/3757)! It has also been featured in model releases from AI labs like Qwen.</li>
                 {% if site.show_sensitive_content %}
                 <li> <b>2026-07</b> Releasing <i>Kimi K3</i>!</li>
                 {% endif %}
-                <li> <b>2026-05</b> Releasing <i>MLS-Bench</i>!{% if site.show_sensitive_content %} It has been officially adopted by the official release evaluations of <a href="https://www.kimi.ai/resources/kimi-k2-7-code">Kimi K2.7 Code</a>, <a href="https://www.kimi.com/blog/kimi-k3">Kimi K3</a>, and <a href="https://qwen.ai/blog?id=qwen3.8">Qwen3.8-Max</a>.{% endif %}</li>
                 <li><b>2025-11</b> Finalist for the <i>Tsinghua University Top Grade Scholarship</i> (15 out of ~3,600, highest honor).</li>
                 <li> <b>2025-07</b> Releasing <i>Goedel-Prover-V2</i>!</li>
                 <li> <b>2025-05</b> <i>Enhancing LLM's Capabilities in Open Domains via Autonomous Tool Integration</i> is accepted to <b>ACL 2025 Main</b>!</li>
@@ -138,6 +139,9 @@
                 <br>
                 {% if post.arxiv %}
                 <a href="{{post.arxiv}}">arXiv</a> /
+                {% endif %}
+                {% if post.paper %}
+                <a href="{{post.paper}}">Paper</a> /
                 {% endif %}
                 {% if post.video %}
                 <a href="{{post.video}}">Video</a> /
