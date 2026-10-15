@@ -2,7 +2,7 @@
 layout: post
 title:  "Scaling Online Exploration for Robot Agents"
 date:   2026-10-14 00:00:00 +00:00
-image: /images/rax.png
+image: /images/rax.mp4
 categories: research
 authors: "Runhan Huang*, Xiangcheng Zhang*, Haoyu Chen*, Yitong Li*, Yen-Jen Wang*, <b>Bohan Lyu*</b>, Haotian Ye, Chuye Hong, Yixuan Wang, Chloe Su, Haoyu Xiong, Yangzhen Wu, Enze Xie, Travis Manderson, Stefano Ermon, Pieter Abbeel, Antonio Torralba, Dawn Song, Weirui Ye, Yilun Du"
 venue: "Preprint, 2026"
