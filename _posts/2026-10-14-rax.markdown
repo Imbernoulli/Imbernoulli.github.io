@@ -10,7 +10,7 @@ arxiv: https://arxiv.org/abs/2610.22496
 code: https://github.com/robot-agent-exploration/rax
 website: https://robot-agent-exploration.com
 selected: true
-highlight: false
+highlight: true
 bibtex: |
     @article{huang2026rax,
         title={Scaling Online Exploration for Robot Agents},
