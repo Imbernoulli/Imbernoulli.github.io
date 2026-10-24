@@ -9,4 +9,7 @@ Gemfile.lock
 node_modules
 package.json
 *.py
+!scripts/berkeley_tennis.py
+!tests/test_berkeley_tennis.py
+__pycache__/
 output.txt

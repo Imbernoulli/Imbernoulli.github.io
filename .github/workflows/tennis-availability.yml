@@ -1,0 +1,62 @@
+name: Update tennis availability
+
+on:
+  schedule:
+    # Local Pacific time, including daylight saving time. Avoid the busy hour boundary.
+    - cron: '17 9-23 * * *'
+      timezone: America/Los_Angeles
+    - cron: '17 0,3,6 * * *'
+      timezone: America/Los_Angeles
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - .github/workflows/tennis-availability.yml
+      - scripts/berkeley_tennis.py
+      - tests/**
+      - assets/tennis.js
+      - assets/tennis-locations.json
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tennis-availability
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify availability handling
+        run: |
+          python3 -m unittest discover -s tests -p 'test_*.py'
+          node --test tests/tennis.test.cjs
+      - name: Query the next three Pacific dates
+        run: python3 scripts/berkeley_tennis.py --days 3 --output "$RUNNER_TEMP/availability.json"
+      - name: Publish the complete snapshot on a separate data branch
+        # Read by the page from raw.githubusercontent.com; no Pages rebuild or PAT needed.
+        # This step only runs after every court/date was fetched successfully.
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git ls-remote --exit-code --heads origin refs/heads/tennis-data; then
+            git fetch --depth=1 origin tennis-data
+            git switch --force-create tennis-data FETCH_HEAD
+          else
+            result=$?
+            if [ "$result" -ne 2 ]; then exit "$result"; fi
+            git switch --orphan tennis-data
+          fi
+          cp "$RUNNER_TEMP/availability.json" availability.json
+          git add availability.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update Berkeley tennis availability'
+          git push origin HEAD:refs/heads/tennis-data

@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Berkeley Rose Garden",
+    "lat": 37.885375,
+    "lon": -122.2632782,
+    "osm_type": "way",
+    "osm_id": 255316871
+  },
+  {
+    "name": "Cedar Rose Park",
+    "lat": 37.876653,
+    "lon": -122.2881193,
+    "osm_type": "relation",
+    "osm_id": 3418739
+  },
+  {
+    "name": "Grove Park",
+    "lat": 37.856491,
+    "lon": -122.2721526,
+    "osm_type": "way",
+    "osm_id": 255316901
+  },
+  {
+    "name": "James Kenney Park",
+    "lat": 37.8717114,
+    "lon": -122.2971768,
+    "osm_type": "way",
+    "osm_id": 62362769
+  },
+  {
+    "name": "Live Oak Park",
+    "lat": 37.8843842,
+    "lon": -122.2692646,
+    "osm_type": "relation",
+    "osm_id": 3418741
+  },
+  {
+    "name": "San Pablo Park",
+    "lat": 37.8557965,
+    "lon": -122.2840014,
+    "osm_type": "way",
+    "osm_id": 255316897
+  },
+  {
+    "name": "Strawberry Creek Park",
+    "lat": 37.8670379,
+    "lon": -122.2862106,
+    "osm_type": "way",
+    "osm_id": 27780834
+  },
+  {
+    "name": "Willard Park",
+    "lat": 37.8610303,
+    "lon": -122.2566437,
+    "osm_type": "way",
+    "osm_id": 31776936
+  },
+  {
+    "name": "UC Berkeley",
+    "lat": 37.8720601,
+    "lon": -122.2578318,
+    "osm_type": "way",
+    "osm_id": 24024507,
+    "campus": true,
+    "landmark": "Sather Tower"
+  }
+]

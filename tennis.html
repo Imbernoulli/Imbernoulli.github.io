@@ -1,0 +1,42 @@
+---
+layout: null
+permalink: /tennis/
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Berkeley municipal tennis court availability for today, tomorrow and the day after. All times are Pacific.">
+  <title>Berkeley tennis · {{ site.name }}</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ '/assets/tennis.css' | relative_url }}">
+  <script src="{{ '/assets/tennis.js' | relative_url }}" defer></script>
+</head>
+<body>
+  <main id="tennis-app"
+    data-snapshot-url="https://raw.githubusercontent.com/Imbernoulli/Imbernoulli.github.io/tennis-data/availability.json"
+    data-initial-url="{{ '/assets/tennis-initial.json' | relative_url }}"
+    data-locations-url="{{ '/assets/tennis-locations.json' | relative_url }}">
+    <p><a href="{{ '/' | relative_url }}">&larr; {{ site.name }}</a></p>
+    <h1>Berkeley tennis courts</h1>
+    <p>Today, tomorrow and the day after. All times are Pacific.</p>
+    <p class="muted">Blue blocks show available times and court numbers. Click a block to open <a id="booking-link" href="https://ca-berkeley.civicrec.com/CA/berkeley-ca/catalog/index/50900cc08e08223966673cbdc0c1b7e3?filter=c2VhcmNoPVRlbm5pcyUyMGNvdXJ0JnJlbnRhbCU1QmZyb20lNUQ9JnJlbnRhbCU1QnRvJTVEPQ==" target="_blank" rel="noopener noreferrer">CivicRec</a>, then select the park and time to book.</p>
+    <p id="updated" class="muted" role="status">Loading availability…</p>
+    <p id="notice" class="notice" role="status" hidden></p>
+    <div id="results" aria-busy="true"></div>
+    <noscript><p>Please enable JavaScript to view availability, or check CivicRec using the link above.</p></noscript>
+    <section class="locations" aria-labelledby="map-heading">
+      <h2 id="map-heading">Courts &amp; campus</h2>
+      <div id="map" aria-label="Map of tennis parks and UC Berkeley"><p class="muted">Loading the map…</p></div>
+      <p id="map-notice" class="muted" hidden>The map could not be loaded. Location links are listed below.</p>
+      <p id="map-key" class="map-key"></p>
+      <p class="muted small">Park locations from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>; markers show parks, not individual courts. <a href="https://berkeleyca.gov/community-recreation/parks-recreation/facilities/sports-fields-and-courts" target="_blank" rel="noopener noreferrer">City court information</a>.</p>
+    </section>
+    <footer>
+      <p>Updates: hourly, 9 am–midnight; every 3 hours overnight (Pacific). Availability and booking rules are confirmed on CivicRec.</p>
+    </footer>
+  </main>
+</body>
+</html>
