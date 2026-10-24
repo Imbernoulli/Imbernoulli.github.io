@@ -1,14 +1,16 @@
 {
   "schema_version": 1,
   "timezone": "America/Los_Angeles",
-  "query_started_at": "2026-10-24T16:13:42-07:00",
-  "generated_at": "2026-10-24T16:13:56-07:00",
+  "query_started_at": "2026-10-24T16:28:17-07:00",
+  "generated_at": "2026-10-24T16:28:41-07:00",
   "booking_url": "https://ca-berkeley.civicrec.com/CA/berkeley-ca/catalog/index/50900cc08e08223966673cbdc0c1b7e3?filter=c2VhcmNoPVRlbm5pcyUyMGNvdXJ0JnJlbnRhbCU1QmZyb20lNUQ9JnJlbnRhbCU1QnRvJTVEPQ==",
   "dates": {
     "2026-10-24": {
       "Berkeley Rose Garden": [
         {
           "court": "Tennis Court #1",
+          "court_id": "77101",
+          "park_id": "17568",
           "fee": "10",
           "slots": [
             [
@@ -23,6 +25,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77103",
+          "park_id": "17568",
           "fee": "10",
           "slots": [
             [
@@ -35,6 +39,8 @@
       "Cedar Rose Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68499",
+          "park_id": "17521",
           "fee": "10",
           "slots": [
             [
@@ -45,6 +51,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77102",
+          "park_id": "17521",
           "fee": "10",
           "slots": []
         }
@@ -52,6 +60,8 @@
       "Grove Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68523",
+          "park_id": "17523",
           "fee": "10",
           "slots": [
             [
@@ -66,6 +76,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77093",
+          "park_id": "17523",
           "fee": "10",
           "slots": [
             [
@@ -82,6 +94,8 @@
       "James Kenney Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68555",
+          "park_id": "17420",
           "fee": "10",
           "slots": [
             [
@@ -96,6 +110,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77106",
+          "park_id": "17420",
           "fee": "10",
           "slots": [
             [
@@ -112,6 +128,8 @@
       "Live Oak Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68491",
+          "park_id": "17517",
           "fee": "10",
           "slots": [
             [
@@ -122,6 +140,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77107",
+          "park_id": "17517",
           "fee": "10",
           "slots": [
             [
@@ -142,6 +162,8 @@
       "San Pablo Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68573",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -160,6 +182,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77108",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -178,6 +202,8 @@
         },
         {
           "court": "Tennis Court #3",
+          "court_id": "77109",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -196,6 +222,8 @@
         },
         {
           "court": "Tennis Court #4",
+          "court_id": "77110",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -214,6 +242,8 @@
         },
         {
           "court": "Tennis Court #5",
+          "court_id": "77111",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -232,6 +262,8 @@
         },
         {
           "court": "Tennis Court #6",
+          "court_id": "77112",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -252,6 +284,8 @@
       "Strawberry Creek Park": [
         {
           "court": "Tennis Court",
+          "court_id": "68581",
+          "park_id": "17524",
           "fee": "10",
           "slots": [
             [
@@ -268,6 +302,8 @@
       "Willard Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68579",
+          "park_id": "19744",
           "fee": "10",
           "slots": [
             [
@@ -282,6 +318,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77113",
+          "park_id": "19744",
           "fee": "10",
           "slots": [
             [
@@ -296,6 +334,8 @@
       "Berkeley Rose Garden": [
         {
           "court": "Tennis Court #1",
+          "court_id": "77101",
+          "park_id": "17568",
           "fee": "10",
           "slots": [
             [
@@ -306,6 +346,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77103",
+          "park_id": "17568",
           "fee": "10",
           "slots": [
             [
@@ -318,6 +360,8 @@
       "Cedar Rose Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68499",
+          "park_id": "17521",
           "fee": "10",
           "slots": [
             [
@@ -336,6 +380,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77102",
+          "park_id": "17521",
           "fee": "10",
           "slots": []
         }
@@ -343,6 +389,8 @@
       "Grove Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68523",
+          "park_id": "17523",
           "fee": "10",
           "slots": [
             [
@@ -361,6 +409,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77093",
+          "park_id": "17523",
           "fee": "10",
           "slots": [
             [
@@ -381,6 +431,8 @@
       "James Kenney Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68555",
+          "park_id": "17420",
           "fee": "10",
           "slots": [
             [
@@ -399,6 +451,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77106",
+          "park_id": "17420",
           "fee": "10",
           "slots": [
             [
@@ -415,6 +469,8 @@
       "Live Oak Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68491",
+          "park_id": "17517",
           "fee": "10",
           "slots": [
             [
@@ -429,6 +485,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77107",
+          "park_id": "17517",
           "fee": "10",
           "slots": [
             [
@@ -453,6 +511,8 @@
       "San Pablo Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68573",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -467,6 +527,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77108",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -485,6 +547,8 @@
         },
         {
           "court": "Tennis Court #3",
+          "court_id": "77109",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -503,6 +567,8 @@
         },
         {
           "court": "Tennis Court #4",
+          "court_id": "77110",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -513,6 +579,8 @@
         },
         {
           "court": "Tennis Court #5",
+          "court_id": "77111",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -523,6 +591,8 @@
         },
         {
           "court": "Tennis Court #6",
+          "court_id": "77112",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -535,6 +605,8 @@
       "Strawberry Creek Park": [
         {
           "court": "Tennis Court",
+          "court_id": "68581",
+          "park_id": "17524",
           "fee": "10",
           "slots": [
             [
@@ -555,6 +627,8 @@
       "Willard Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68579",
+          "park_id": "19744",
           "fee": "10",
           "slots": [
             [
@@ -569,6 +643,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77113",
+          "park_id": "19744",
           "fee": "10",
           "slots": [
             [
@@ -591,6 +667,8 @@
       "Berkeley Rose Garden": [
         {
           "court": "Tennis Court #1",
+          "court_id": "77101",
+          "park_id": "17568",
           "fee": "10",
           "slots": [
             [
@@ -605,6 +683,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77103",
+          "park_id": "17568",
           "fee": "10",
           "slots": [
             [
@@ -621,6 +701,8 @@
       "Cedar Rose Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68499",
+          "park_id": "17521",
           "fee": "10",
           "slots": [
             [
@@ -631,6 +713,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77102",
+          "park_id": "17521",
           "fee": "10",
           "slots": []
         }
@@ -638,6 +722,8 @@
       "Grove Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68523",
+          "park_id": "17523",
           "fee": "10",
           "slots": [
             [
@@ -656,6 +742,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77093",
+          "park_id": "17523",
           "fee": "10",
           "slots": [
             [
@@ -672,6 +760,8 @@
       "James Kenney Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68555",
+          "park_id": "17420",
           "fee": "10",
           "slots": [
             [
@@ -686,6 +776,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77106",
+          "park_id": "17420",
           "fee": "10",
           "slots": [
             [
@@ -702,6 +794,8 @@
       "Live Oak Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68491",
+          "park_id": "17517",
           "fee": "10",
           "slots": [
             [
@@ -712,6 +806,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77107",
+          "park_id": "17517",
           "fee": "10",
           "slots": [
             [
@@ -728,6 +824,8 @@
       "San Pablo Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68573",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -742,6 +840,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77108",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -756,6 +856,8 @@
         },
         {
           "court": "Tennis Court #3",
+          "court_id": "77109",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -770,6 +872,8 @@
         },
         {
           "court": "Tennis Court #4",
+          "court_id": "77110",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -784,6 +888,8 @@
         },
         {
           "court": "Tennis Court #5",
+          "court_id": "77111",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -798,6 +904,8 @@
         },
         {
           "court": "Tennis Court #6",
+          "court_id": "77112",
+          "park_id": "19743",
           "fee": "10",
           "slots": [
             [
@@ -814,6 +922,8 @@
       "Strawberry Creek Park": [
         {
           "court": "Tennis Court",
+          "court_id": "68581",
+          "park_id": "17524",
           "fee": "10",
           "slots": [
             [
@@ -830,6 +940,8 @@
       "Willard Park": [
         {
           "court": "Tennis Court #1",
+          "court_id": "68579",
+          "park_id": "19744",
           "fee": "10",
           "slots": [
             [
@@ -840,6 +952,8 @@
         },
         {
           "court": "Tennis Court #2",
+          "court_id": "77113",
+          "park_id": "19744",
           "fee": "10",
           "slots": [
             [
