@@ -28,7 +28,7 @@ jobs:
   update:
     if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -38,6 +38,16 @@ jobs:
         run: |
           python3 -m unittest discover -s tests -p 'test_*.py'
           node --test tests/tennis.test.cjs
+      - name: Spread scheduled queries over a seven-minute window
+        if: github.event_name == 'schedule'
+        run: |
+          python3 - <<'PY'
+          import secrets
+          import time
+          delay = secrets.randbelow(421)
+          print(f"Waiting {delay} seconds before querying CivicRec", flush=True)
+          time.sleep(delay)
+          PY
       - name: Query the next three Pacific dates
         run: python3 scripts/berkeley_tennis.py --days 3 --output "$RUNNER_TEMP/availability.json"
       - name: Publish the complete snapshot on a separate data branch

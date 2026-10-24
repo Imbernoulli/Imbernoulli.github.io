@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import urllib.error
 from unittest.mock import patch
 
 SPEC = importlib.util.spec_from_file_location(
@@ -14,6 +15,14 @@ SPEC.loader.exec_module(tennis)
 
 
 class AvailabilityTests(unittest.TestCase):
+    def test_rate_limit_stops_without_immediate_retries(self):
+        client = tennis.Client()
+        error = urllib.error.HTTPError("https://example.invalid", 429, "Too Many Requests", {}, None)
+        with patch.object(client.opener, "open", side_effect=error) as request:
+            with self.assertRaisesRegex(RuntimeError, "rate limit"):
+                client._req("https://example.invalid")
+        self.assertEqual(request.call_count, 1)
+
     def test_adult_rate_blocked_hours_and_merging(self):
         client = tennis.Client()
         client.key = "test"
@@ -80,8 +89,8 @@ class AvailabilityTests(unittest.TestCase):
     def test_snapshot_covers_all_dates_and_preserves_full_windows(self):
         class GoodClient:
             def start(self): pass
-            def parks(self): return [("park", "Live Oak Park")]
-            def courts(self, _): return [("one", "Court 1")]
+            def parks(self): return [(17517, "Live Oak Park")]
+            def courts(self, _): return [(68491, "Court 1")]
             def slots(self, _, date):
                 return {"base_fee": "10"}, [(dt.datetime.fromisoformat(date + "T07:00"),
                                               dt.datetime.fromisoformat(date + "T22:00"))]
@@ -92,6 +101,8 @@ class AvailabilityTests(unittest.TestCase):
         self.assertEqual(snapshot["timezone"], "America/Los_Angeles")
         for parks in snapshot["dates"].values():
             self.assertEqual(parks["Live Oak Park"][0]["slots"], [["07:00", "22:00"]])
+            self.assertEqual(parks["Live Oak Park"][0]["park_id"], "17517")
+            self.assertEqual(parks["Live Oak Park"][0]["court_id"], "68491")
         with tempfile.TemporaryDirectory() as folder:
             path = Path(folder) / "nested" / "availability.json"
             tennis.write_snapshot(path, snapshot)

@@ -67,6 +67,18 @@
     return `${String(Math.floor(minute / 60)).padStart(2, "0")}:${String(minute % 60).padStart(2, "0")}`;
   }
 
+  function courtBookingUrl(parkId, courtName) {
+    if (!/^\d+$/.test(String(parkId)) || typeof courtName !== "string" || !courtName.trim()) {
+      throw new Error("A park ID and court name are required for a booking link");
+    }
+    // These are the Weblink filters CivicRec actually preserves on a fresh visit.
+    // Rental date/time filters are discarded by its public catalog entry point.
+    const filters = new URLSearchParams([
+      ["tab[7865]", "1"], [`location[${parkId}]`, "1"], ["search", courtName],
+    ]).toString().replace(/\+/g, "%20");
+    return "https://ca-berkeley.civicrec.com/CA/berkeley-ca/catalog?filter=" + encodeURIComponent(btoa(filters));
+  }
+
   function buildTimeline(parks, date, clock) {
     const firstMinute = date === clock.date
       ? Math.min(22 * 60, Math.max(7 * 60, Math.floor(clock.minute / 30) * 30)) : 7 * 60;
@@ -108,14 +120,14 @@
 
   // Also load these pure date/filter functions in Node's built-in test runner.
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline };
+    module.exports = { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl };
     return;
   }
 
   const app = document.getElementById("tennis-app");
   if (!app) return;
   const byId = id => document.getElementById(id);
-  const bookingUrl = byId("booking-link").href;
+  const parkIds = new Map();
   let snapshot = null;
   let loading = false;
   let lastAttempt = 0;
@@ -184,12 +196,18 @@
         cell.rowSpan = run.rowSpan;
         if (run.courts.length) {
           const window = `${formatTime(run.start)}–${formatTime(run.end)}`;
-          const numbers = run.courts.map(court => court.match(/#(\d+)/)?.[1] || "Court").join(",");
-          const booking = link("", bookingUrl);
-          booking.setAttribute("aria-label", `${date}, ${column.park}, ${window}, ${run.courts.join(", ")}. Open CivicRec to book.`);
-          booking.title = `${date} · ${column.park} · ${window} · ${run.courts.join(", ")}`;
-          booking.append(element("span", "court-numbers", numbers === "Court" ? "Court" : `#${numbers}`));
-          cell.append(booking);
+          const parkId = parks[column.park][0].park_id || parkIds.get(column.park);
+          const options = element("div", "booking-options");
+          for (const court of run.courts) {
+            const number = court.match(/#(\d+)/)?.[1];
+            const label = number ? `#${number}` : "Court";
+            const booking = parkId ? link("", courtBookingUrl(parkId, court)) : element("span");
+            booking.setAttribute("aria-label", `${date}, ${column.park}, ${window}, ${court}. Open this court on CivicRec; select the date and time there.`);
+            booking.title = `${date} · ${column.park} · ${window} · ${court}`;
+            booking.append(element("span", "court-numbers", label));
+            options.append(booking);
+          }
+          cell.append(options);
         }
         tr.append(cell);
       }
@@ -267,6 +285,11 @@
   async function setupMap() {
     try {
       const locations = await getJSON(app.dataset.locationsUrl);
+      for (const place of locations) {
+        if (place.civicrec_location_id) parkIds.set(place.name, place.civicrec_location_id);
+      }
+      // Older cached snapshots do not yet carry park IDs.
+      if (snapshot) render();
       const mapKey = byId("map-key");
       for (const [index, place] of locations.entries()) {
         const url = `https://www.openstreetmap.org/${place.osm_type}/${place.osm_id}`;

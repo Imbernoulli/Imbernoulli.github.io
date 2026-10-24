@@ -4,8 +4,12 @@
 
 The homepage's Useful Links section links to `/tennis/`. This static page shows today, tomorrow,
 and the following day in `America/Los_Angeles`. All three days are stacked vertically,
-each with time down the rows and parks across the columns. Blue blocks link directly
-to CivicRec's booking page; the user selects the park and time there. Court numbers
+each with time down the rows and parks across the columns. Each court number in a
+blue block has its own link, filtering CivicRec to that exact park and court. The
+user still selects the date and time on CivicRec. Its public Weblink entry point
+discards rental date/time filters; these are not presented as preselected bookings.
+See the official [Weblink documentation](https://www.civicplus.help/recreation-management/docs/build-a-weblink).
+Court numbers
 are shown inside each available window. Intervals with no availability across any
 park collapse into a single compact row. A map below marks all eight parks and
 UC Berkeley (Sather Tower), using OpenStreetMap coordinates and Leaflet 1.9.4.
@@ -13,11 +17,14 @@ The map loads when it approaches the viewport; location links remain available
 if the external map library or tiles cannot load.
 It covers the Berkeley municipal tennis reservation catalog, not every nearby city.
 
-`.github/workflows/tennis-availability.yml` fetches all courts at minute 17:
+`.github/workflows/tennis-availability.yml` schedules queries at minute 17, then
+waits a random 0–420 seconds before contacting CivicRec (approximately minutes
+17–24, plus any GitHub scheduling delay):
 
 - Every hour from 09:17 through 23:17 Pacific.
 - At 00:17, 03:17, and 06:17 Pacific overnight.
 - The timezone-aware schedules follow daylight saving time automatically.
+- Manual refreshes and code-triggered runs skip the random wait.
 
 After these changes are pushed to `master`, the workflow runs once and creates the
 `tennis-data` branch containing `availability.json`. Subsequent successful runs
@@ -35,6 +42,8 @@ in local storage and marks old data. A failed or incomplete upstream query does 
 overwrite the published snapshot. Missing dates are shown as awaiting an update,
 rather than being labeled as having no openings. Reloading the page or the snapshot
 does not trigger a new CivicRec query; bookings and final availability are on CivicRec.
+HTTP 429 stops the current update without immediate retries, preserving the last
+successful data instead of repeatedly requesting a rate-limited service.
 
 GitHub schedules can be delayed, and public-repository schedules can be disabled
 after 60 days without repository activity. Monitor Actions if updates stop; see

@@ -52,7 +52,9 @@ class Client:
                 with self.opener.open(request, timeout=30) as response:
                     return response.read().decode("utf-8")
             except urllib.error.HTTPError as exc:
-                if exc.code not in (429, 500, 502, 503, 504) or attempt == 2:
+                if exc.code == 429:
+                    raise RuntimeError("CivicRec rate limit reached; stopping this update") from None
+                if exc.code not in (500, 502, 503, 504) or attempt == 2:
                     # Do not expose a session key in logs via the request URL.
                     raise RuntimeError(f"CivicRec returned HTTP {exc.code}") from None
             except (urllib.error.URLError, TimeoutError):
@@ -130,6 +132,8 @@ def collect(client, dates, park_keywords=None):
                 rate, segments = client.slots(court_id, date)
                 result[date].setdefault(park_name, []).append({
                     "court": court_name,
+                    "court_id": str(court_id),
+                    "park_id": str(park_id),
                     "fee": rate.get("base_fee") if rate else None,
                     "slots": [[start.strftime("%H:%M"), end.strftime("%H:%M")] for start, end in segments],
                 })

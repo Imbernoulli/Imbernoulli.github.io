@@ -1,6 +1,20 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline } = require('../assets/tennis.js');
+const { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl } = require('../assets/tennis.js');
+
+test('court links target the exact park and individual court, without a shared checkout key', () => {
+  const url = new URL(courtBookingUrl('17517', 'Tennis Court #2'));
+  assert.equal(url.origin, 'https://ca-berkeley.civicrec.com');
+  assert.equal(url.pathname, '/CA/berkeley-ca/catalog');
+  const filters = new URLSearchParams(atob(url.searchParams.get('filter')));
+  assert.equal(filters.get('tab[7865]'), '1');
+  assert.equal(filters.get('location[17517]'), '1');
+  assert.equal(filters.get('search'), 'Tennis Court #2');
+  assert.notEqual(courtBookingUrl('17517', 'Tennis Court #1'), url.href);
+  assert.notEqual(courtBookingUrl('17523', 'Tennis Court #2'), url.href);
+  assert.throws(() => courtBookingUrl('', 'Tennis Court #1'));
+  assert.throws(() => courtBookingUrl('17517', ''));
+});
 
 test('Pacific dates stay correct across UTC midnight and both DST transitions', () => {
   assert.equal(pacificClock(new Date('2026-10-25T01:00:00Z')).date, '2026-10-24');
@@ -81,6 +95,7 @@ test('map includes every catalog park and a central campus marker', () => {
     assert.ok(place.lat > 37.85 && place.lat < 37.90);
     assert.ok(place.lon > -122.31 && place.lon < -122.25);
     assert.ok(place.osm_id);
+    if (!place.campus) assert.match(place.civicrec_location_id, /^\d+$/);
   }
 });
 
