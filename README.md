@@ -2,7 +2,7 @@
 
 ## Berkeley tennis availability
 
-The homepage footer links to `/tennis/`. This static page shows today, tomorrow,
+The homepage's Useful Links section links to `/tennis/`. This static page shows today, tomorrow,
 and the following day in `America/Los_Angeles`. All three days are stacked vertically,
 each with time down the rows and parks across the columns. Blue blocks link directly
 to CivicRec's booking page; the user selects the park and time there. Court numbers
