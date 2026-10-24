@@ -164,16 +164,17 @@
     const tbody = element("tbody");
     for (const interval of rows) {
       const row = interval.start;
+      const timeRange = `${formatTime(times[row])}–${formatTime(times[interval.end])}`;
       if (interval.empty) {
         const gap = element("tr", "time-gap");
-        const label = element("th", "", `${formatTime(times[row])}–${formatTime(times[interval.end])} · No availability`);
+        const label = element("th", "", `${timeRange} · No availability`);
         label.colSpan = columns.length + 1;
         gap.append(label);
         tbody.append(gap);
         continue;
       }
       const tr = element("tr", times[row] % 60 === 0 ? "hour" : "");
-      const time = element("th", "", formatTime(times[row]));
+      const time = element("th", "", timeRange);
       time.scope = "row";
       tr.append(time);
       for (const column of columns) {
@@ -194,14 +195,7 @@
       }
       tbody.append(tr);
     }
-    const tfoot = element("tfoot");
-    const endRow = element("tr");
-    endRow.append(element("th", "", formatTime(times.at(-1))));
-    const endCell = element("td");
-    endCell.colSpan = columns.length;
-    endRow.append(endCell);
-    tfoot.append(endRow);
-    table.append(colgroup, thead, tbody, tfoot);
+    table.append(colgroup, thead, tbody);
     scroll.append(table);
     return scroll;
   }
