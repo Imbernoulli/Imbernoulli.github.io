@@ -26,7 +26,7 @@ p { margin: 10px 0; }
 .tone-0 { --slot-bg: #e3f2fd; --slot-hover: #cfe7fa; }
 .tone-1 { --slot-bg: #e3f2e8; --slot-hover: #cce7d5; }
 .tone-2 { --slot-bg: #eee5f8; --slot-hover: #dfd0f0; }
-.tone-3 { --slot-bg: #fff0dd; --slot-hover: #f9dfba; }
+.tone-3 { --slot-bg: #def3f3; --slot-hover: #c7e8e8; }
 .booking-options { display: flex; position: absolute; inset: 0; }
 .booking-options > a, .booking-options > span { display: flex; align-items: center; justify-content: center; flex: 1; min-width: 0; padding: 2px 0; }
 .available a:hover, .available a:focus { background: var(--slot-hover); color: #003262; }
