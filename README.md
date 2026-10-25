@@ -21,10 +21,18 @@ It covers the Berkeley municipal tennis reservation catalog, not every nearby ci
 waits a random 0–420 seconds before contacting CivicRec (approximately minutes
 17–24, plus any GitHub scheduling delay):
 
-- Every hour from 09:17 through 23:17 Pacific.
-- At 00:17, 03:17, and 06:17 Pacific overnight.
+- Every hour from 07:17 through 21:17 Pacific.
+- No queries between 22:00 and 07:00 Pacific. A check after the random wait also
+  skips queries if a scheduled run starts late; manual/code-triggered runs respect
+  these hours too.
 - The timezone-aware schedules follow daylight saving time automatically.
 - Manual refreshes and code-triggered runs skip the random wait.
+
+Timetables only show 07:00–22:00. After closing, today's section shows a brief
+end-of-day message instead of an empty table. At midnight, the dates roll forward;
+a date not yet fetched is shown as awaiting the morning update. Planned overnight
+pauses do not produce stale-data warnings, and the first morning run has a grace
+period until 07:30 Pacific.
 
 After these changes are pushed to `master`, the workflow runs once and creates the
 `tennis-data` branch containing `availability.json`. Subsequent successful runs

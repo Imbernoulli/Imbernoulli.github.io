@@ -3,9 +3,7 @@ name: Update tennis availability
 on:
   schedule:
     # Local Pacific time, including daylight saving time. Avoid the busy hour boundary.
-    - cron: '17 9-23 * * *'
-      timezone: America/Los_Angeles
-    - cron: '17 0,3,6 * * *'
+    - cron: '17 7-21 * * *'
       timezone: America/Los_Angeles
   workflow_dispatch:
   push:
@@ -48,9 +46,24 @@ jobs:
           print(f"Waiting {delay} seconds before querying CivicRec", flush=True)
           time.sleep(delay)
           PY
+      - name: Check Pacific opening hours after any scheduling delay
+        id: hours
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import os
+          from zoneinfo import ZoneInfo
+          now = dt.datetime.now(ZoneInfo("America/Los_Angeles"))
+          allowed = 7 <= now.hour < 22
+          with open(os.environ["GITHUB_OUTPUT"], "a") as output:
+              output.write(f"allowed={str(allowed).lower()}\n")
+          print("Query window open" if allowed else "Outside 07:00–22:00 Pacific; skipping query")
+          PY
       - name: Query the next three Pacific dates
+        if: steps.hours.outputs.allowed == 'true'
         run: python3 scripts/berkeley_tennis.py --days 3 --output "$RUNNER_TEMP/availability.json"
       - name: Publish the complete snapshot on a separate data branch
+        if: steps.hours.outputs.allowed == 'true'
         # Read by the page from raw.githubusercontent.com; no Pages rebuild or PAT needed.
         # This step only runs after every court/date was fetched successfully.
         shell: bash

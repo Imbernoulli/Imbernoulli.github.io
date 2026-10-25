@@ -2,6 +2,8 @@
   "use strict";
   const TIMEZONE = "America/Los_Angeles";
   const CACHE_KEY = "berkeley-tennis-v1";
+  const OPEN_MINUTE = 7 * 60;
+  const CLOSE_MINUTE = 22 * 60;
 
   function pacificClock(now = new Date()) {
     const parts = Object.fromEntries(new Intl.DateTimeFormat("en-US", {
@@ -10,7 +12,7 @@
     }).formatToParts(now).map(part => [part.type, part.value]));
     return {
       date: `${parts.year}-${parts.month}-${parts.day}`,
-      minute: Number(parts.hour) * 60 + Number(parts.minute) + (Number(parts.second) > 0 ? 1 : 0),
+      minute: Number(parts.hour) * 60 + Number(parts.minute) + Number(parts.second) / 60,
       hour: Number(parts.hour),
     };
   }
@@ -27,15 +29,21 @@
     return Number(time.slice(0, 2)) * 60 + Number(time.slice(3, 5));
   }
 
+  function isQueryTime(clock) {
+    return clock.minute >= OPEN_MINUTE && clock.minute < CLOSE_MINUTE;
+  }
+
   function visibleSlots(slots, date, clock) {
     if (date < clock.date) return [];
     const current = date === clock.date ? clock.minute : 0;
-    const gridStart = Math.floor(current / 30) * 30;
+    if (current >= CLOSE_MINUTE) return [];
+    const gridStart = Math.max(OPEN_MINUTE, Math.floor(current / 30) * 30);
     return slots.flatMap(([start, end]) => {
-      if (minutes(end) <= current) return [];
       const a = Math.max(minutes(start), gridStart);
+      const b = Math.min(minutes(end), CLOSE_MINUTE);
+      if (b <= Math.max(a, current)) return [];
       const from = `${String(Math.floor(a / 60)).padStart(2, "0")}:${String(a % 60).padStart(2, "0")}`;
-      return [[from, end]];
+      return [[from, formatTime(b)]];
     });
   }
 
@@ -81,8 +89,8 @@
 
   function buildTimeline(parks, date, clock) {
     const firstMinute = date === clock.date
-      ? Math.min(22 * 60, Math.max(7 * 60, Math.floor(clock.minute / 30) * 30)) : 7 * 60;
-    const boundaries = new Set(Array.from({ length: (22 * 60 - firstMinute) / 30 + 1 }, (_, i) => firstMinute + i * 30));
+      ? Math.min(CLOSE_MINUTE, Math.max(OPEN_MINUTE, Math.floor(clock.minute / 30) * 30)) : OPEN_MINUTE;
+    const boundaries = new Set(Array.from({ length: (CLOSE_MINUTE - firstMinute) / 30 + 1 }, (_, i) => firstMinute + i * 30));
     const columns = Object.entries(parks).map(([park, courts]) => {
       const windows = courts.flatMap(court => visibleSlots(court.slots, date, clock).map(([start, end]) => {
         const a = minutes(start), b = minutes(end);
@@ -120,7 +128,7 @@
 
   // Also load these pure date/filter functions in Node's built-in test runner.
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl };
+    module.exports = { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl, isQueryTime };
     return;
   }
 
@@ -157,7 +165,9 @@
 
   function timetable(parks, date, clock) {
     const { times, columns, rows } = buildTimeline(parks, date, clock);
+    if (!rows.length) return element("p", "muted", "No remaining court times today.");
     const scroll = element("div", "table-scroll");
+    scroll.dataset.date = date;
     scroll.tabIndex = 0;
     scroll.setAttribute("role", "region");
     scroll.setAttribute("aria-label", `${date} availability; scroll horizontally on small screens`);
@@ -223,7 +233,7 @@
     const dates = nextDates(clock.date);
     const results = byId("results");
     // Keep scroll positions when an open page updates.
-    const positions = [...results.querySelectorAll(".table-scroll")].map(node => node.scrollLeft);
+    const positions = new Map([...results.querySelectorAll(".table-scroll")].map(node => [node.dataset.date, node.scrollLeft]));
     results.replaceChildren();
     results.setAttribute("aria-busy", String(loading && !snapshot));
     const notices = [];
@@ -235,7 +245,10 @@
       byId("updated").textContent = `Last checked ${new Intl.DateTimeFormat("en-US", {
         timeZone: TIMEZONE, month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short",
       }).format(updated)}.`;
-      if (age > 240) notices.push("This snapshot is over 4 hours old. Check CivicRec for current availability.");
+      // Overnight updates are intentionally paused; allow the first morning run to finish.
+      if (age > 240 && isQueryTime(clock) && clock.minute >= OPEN_MINUTE + 30) {
+        notices.push("This snapshot is over 4 hours old. Check CivicRec for current availability.");
+      }
     }
     for (const [index, date] of dates.entries()) {
       const section = element("section", "day-section");
@@ -244,14 +257,17 @@
       }).format(new Date(`${date}T12:00:00Z`));
       section.append(element("h2", "", `${["Today", "Tomorrow", "Day after tomorrow"][index]} · ${formatted}`));
       const parks = snapshot?.dates[date];
-      if (parks) {
+      if (index === 0 && clock.minute >= CLOSE_MINUTE) {
+        section.append(element("p", "muted", "No remaining court times today."));
+      } else if (parks) {
         section.append(timetable(parks, date, clock));
       } else {
-        section.append(element("p", "muted", loading && !snapshot ? "Loading…" : "Awaiting the next successful update. Check CivicRec for this date."));
+        const pending = !isQueryTime(clock) ? "Updates resume at 7 am Pacific." : "Awaiting the next successful update. Check CivicRec for this date.";
+        section.append(element("p", "muted", loading && !snapshot ? "Loading…" : pending));
       }
       results.append(section);
       const scroll = section.querySelector(".table-scroll");
-      if (scroll) scroll.scrollLeft = positions[index] || 0;
+      if (scroll) scroll.scrollLeft = positions.get(date) || 0;
     }
     byId("notice").hidden = !notices.length;
     byId("notice").textContent = notices.join(" ");
@@ -347,12 +363,12 @@
   reload(true);
   setupMap();
   setInterval(() => {
-    if (Date.now() - lastAttempt >= 15 * 60000) reload();
+    if (isQueryTime(pacificClock()) && Date.now() - lastAttempt >= 15 * 60000) reload();
     else render();
   }, 60000);
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-      if (Date.now() - lastAttempt > 5 * 60000) reload();
+      if (isQueryTime(pacificClock()) && Date.now() - lastAttempt > 5 * 60000) reload();
       else render();
     }
   });

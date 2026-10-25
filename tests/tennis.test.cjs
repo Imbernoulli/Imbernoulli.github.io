@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl } = require('../assets/tennis.js');
+const { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl, isQueryTime } = require('../assets/tennis.js');
 
 test('court links target the exact park and individual court, without a shared checkout key', () => {
   const url = new URL(courtBookingUrl('17517', 'Tennis Court #2'));
@@ -29,6 +29,46 @@ test('three calendar dates include today over DST and year boundaries', () => {
   assert.deepEqual(nextDates('2026-03-07'), ['2026-03-07', '2026-03-08', '2026-03-09']);
   assert.deepEqual(nextDates('2026-10-31'), ['2026-10-31', '2026-11-01', '2026-11-02']);
   assert.deepEqual(nextDates('2026-12-31'), ['2026-12-31', '2027-01-01', '2027-01-02']);
+});
+
+test('Pacific query hours include opening and stop exactly at closing', () => {
+  for (const [time, allowed] of [
+    ['2026-10-24T06:59:59-07:00', false],
+    ['2026-10-24T07:00:00-07:00', true],
+    ['2026-10-24T21:59:59-07:00', true],
+    ['2026-10-24T22:00:00-07:00', false],
+    ['2026-10-24T23:59:59-07:00', false],
+    ['2026-10-25T00:00:00-07:00', false],
+  ]) assert.equal(isQueryTime(pacificClock(new Date(time))), allowed, time);
+});
+
+test('opening-hour clipping never expands the grid into overnight hours', () => {
+  const slots = [['00:00', '07:00'], ['06:30', '07:30'], ['21:30', '23:00'], ['22:00', '23:30']];
+  const clock = pacificClock(new Date('2026-10-24T06:59:59-07:00'));
+  assert.deepEqual(visibleSlots(slots, clock.date, clock), [['07:00', '07:30'], ['21:30', '22:00']]);
+  const { times, rows } = buildTimeline({ Park: [{ court: 'Court #1', slots }] }, clock.date, clock);
+  assert.equal(times[0], 420);
+  assert.equal(times.at(-1), 1320);
+  assert.ok(rows.every(row => times[row.start] < times[row.end]));
+});
+
+test('after closing today has no rows; midnight restores the new day’s normal grid', () => {
+  const parks = { Park: [{ court: 'Court #1', slots: [['07:00', '23:00']] }] };
+  const lastSecond = pacificClock(new Date('2026-10-24T21:59:59-07:00'));
+  assert.deepEqual(visibleSlots(parks.Park[0].slots, lastSecond.date, lastSecond), [['21:30', '22:00']]);
+  for (const time of ['2026-10-24T22:00:00-07:00', '2026-10-24T23:59:59-07:00']) {
+    const clock = pacificClock(new Date(time));
+    const timeline = buildTimeline(parks, clock.date, clock);
+    assert.deepEqual(timeline.rows, []);
+    assert.deepEqual(timeline.times, [1320]);
+    assert.deepEqual(timeline.columns[0].windows, []);
+  }
+  const clock = pacificClock(new Date('2026-10-25T00:00:00-07:00'));
+  assert.deepEqual(nextDates(clock.date), ['2026-10-25', '2026-10-26', '2026-10-27']);
+  const timeline = buildTimeline(parks, clock.date, clock);
+  assert.equal(timeline.times[0], 420);
+  assert.equal(timeline.times.at(-1), 1320);
+  assert.ok(timeline.rows.every(row => timeline.times[row.start] < timeline.times[row.end]));
 });
 
 test('hide elapsed windows and align current windows to the existing time grid', () => {
