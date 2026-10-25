@@ -5,7 +5,7 @@
 The homepage's Useful Links section links to `/tennis/`. This static page shows today, tomorrow,
 and the following day in `America/Los_Angeles`. All three days are stacked vertically,
 each with time down the rows and parks across the columns. Each court number in a
-blue block has its own link, filtering CivicRec to that exact park and court. The
+colored block has its own link, filtering CivicRec to that exact park and court. The
 user still selects the date and time on CivicRec. Its public Weblink entry point
 discards rental date/time filters; these are not presented as preselected bookings.
 See the official [Weblink documentation](https://www.civicplus.help/recreation-management/docs/build-a-weblink).
@@ -16,21 +16,28 @@ UC Berkeley (Sather Tower), using OpenStreetMap coordinates and Leaflet 1.9.4.
 The map loads when it approaches the viewport; location links remain available
 if the external map library or tiles cannot load.
 It covers the Berkeley municipal tennis reservation catalog, not every nearby city.
+Adjacent windows within a park alternate colors; neighboring park columns use
+different color pairs so overlapping blocks remain distinguishable too.
 
 `.github/workflows/tennis-availability.yml` schedules queries at minute 17, then
 waits a random 0–420 seconds before contacting CivicRec (approximately minutes
 17–24, plus any GitHub scheduling delay):
 
 - Every hour from 07:17 through 21:17 Pacific.
-- No queries between 22:00 and 07:00 Pacific. A check after the random wait also
-  skips queries if a scheduled run starts late; manual/code-triggered runs respect
-  these hours too.
+- One final refresh scheduled at 00:00 Pacific, followed by the same random
+  0–7 minute wait. It fetches the three dates relative to the new calendar day,
+  including the new third day. GitHub can start scheduled jobs late.
+- Other overnight queries are paused. The query guard allows a delayed midnight
+  run to finish before 07:00; manual/code-triggered runs can query during the
+  midnight hour as well as daytime hours.
 - The timezone-aware schedules follow daylight saving time automatically.
 - Manual refreshes and code-triggered runs skip the random wait.
 
 Timetables only show 07:00–22:00. After closing, today's section shows a brief
 end-of-day message instead of an empty table. At midnight, the dates roll forward;
-a date not yet fetched is shown as awaiting the morning update. Planned overnight
+a date not yet fetched is shown as awaiting the midnight update. An open tab
+checks the saved JSON once a minute until all three dates are covered, then
+pauses overnight reads; these checks do not contact CivicRec. Planned overnight
 pauses do not produce stale-data warnings, and the first morning run has a grace
 period until 07:30 Pacific.
 

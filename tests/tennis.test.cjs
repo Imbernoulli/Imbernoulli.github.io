@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl, isQueryTime } = require('../assets/tennis.js');
+const { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl, isQueryTime, snapshotRefreshDue } = require('../assets/tennis.js');
 
 test('court links target the exact park and individual court, without a shared checkout key', () => {
   const url = new URL(courtBookingUrl('17517', 'Tennis Court #2'));
@@ -29,6 +29,20 @@ test('three calendar dates include today over DST and year boundaries', () => {
   assert.deepEqual(nextDates('2026-03-07'), ['2026-03-07', '2026-03-08', '2026-03-09']);
   assert.deepEqual(nextDates('2026-10-31'), ['2026-10-31', '2026-11-01', '2026-11-02']);
   assert.deepEqual(nextDates('2026-12-31'), ['2026-12-31', '2027-01-01', '2027-01-02']);
+});
+
+test('an open tab picks up the new third day after midnight, including a delayed publish', () => {
+  const oldSnapshot = { dates: { '2026-10-24': {}, '2026-10-25': {}, '2026-10-26': {} } };
+  const newSnapshot = { dates: { '2026-10-25': {}, '2026-10-26': {}, '2026-10-27': {} } };
+  const lastAttempt = 100000;
+  const beforeMidnight = pacificClock(new Date('2026-10-24T23:59:59-07:00'));
+  assert.equal(snapshotRefreshDue(oldSnapshot, beforeMidnight, lastAttempt, lastAttempt + 60000), false);
+  for (const time of ['2026-10-25T00:00:00-07:00', '2026-10-25T02:00:00-07:00']) {
+    const clock = pacificClock(new Date(time));
+    assert.equal(snapshotRefreshDue(oldSnapshot, clock, lastAttempt, lastAttempt + 59999), false);
+    assert.equal(snapshotRefreshDue(oldSnapshot, clock, lastAttempt, lastAttempt + 60000), true);
+    assert.equal(snapshotRefreshDue(newSnapshot, clock, lastAttempt, lastAttempt + 60000), false);
+  }
 });
 
 test('Pacific query hours include opening and stop exactly at closing', () => {
@@ -91,6 +105,32 @@ test('timeline merges adjacent identical court groups and preserves changes', ()
     { start: 480, end: 540, rowSpan: 2, courts: ['Court #1', 'Court #2'] },
     { start: 540, end: 600, rowSpan: 2, courts: ['Court #2'] },
   ]);
+});
+
+test('touching time blocks have different tones vertically and across neighboring parks', () => {
+  const courts = [
+    { court: 'Court #1', slots: [['07:00', '09:00']] },
+    { court: 'Court #2', slots: [['08:00', '10:00']] },
+  ];
+  const { columns } = buildTimeline({ First: courts, Second: courts, Third: courts }, '2026-10-25', { date: '2026-10-24', minute: 600 });
+  for (const column of columns) {
+    const blocks = [...column.runs.entries()].filter(([, run]) => run.courts.length);
+    for (let i = 1; i < blocks.length; i++) {
+      const [previousRow, previous] = blocks[i - 1];
+      const [row, run] = blocks[i];
+      if (previous.end === run.start) assert.notEqual(column.tones.get(previousRow), column.tones.get(row));
+    }
+  }
+  for (let index = 1; index < columns.length; index++) {
+    const left = columns[index - 1], right = columns[index];
+    for (const [leftRow, a] of left.runs) {
+      for (const [rightRow, b] of right.runs) {
+        if (a.courts.length && b.courts.length && a.start < b.end && b.start < a.end) {
+          assert.notEqual(left.tones.get(leftRow), right.tones.get(rightRow));
+        }
+      }
+    }
+  }
 });
 
 test('timeline aligns parks to half-hour rows without inventing current-minute boundaries', () => {

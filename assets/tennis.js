@@ -33,6 +33,14 @@
     return clock.minute >= OPEN_MINUTE && clock.minute < CLOSE_MINUTE;
   }
 
+  function snapshotRefreshDue(snapshot, clock, lastAttempt, now = Date.now()) {
+    const missingDates = !snapshot || nextDates(clock.date).some(date => !snapshot.dates[date]);
+    // When a new day rolls in, check the saved JSON until the midnight job publishes it.
+    // These reads never query CivicRec or trigger a scraper run.
+    const interval = missingDates ? 60000 : 15 * 60000;
+    return (isQueryTime(clock) || missingDates) && now - lastAttempt >= interval;
+  }
+
   function visibleSlots(slots, date, clock) {
     if (date < clock.date) return [];
     const current = date === clock.date ? clock.minute : 0;
@@ -100,17 +108,23 @@
       return { park, windows };
     });
     const times = [...boundaries].sort((a, b) => a - b);
-    for (const column of columns) {
+    for (const [columnIndex, column] of columns.entries()) {
       const active = times.slice(0, -1).map((start, row) => column.windows
         .filter(window => window.start <= start && window.end >= times[row + 1])
         .map(window => window.court).sort());
       column.runs = new Map();
+      column.tones = new Map();
+      let blockIndex = 0;
       for (let row = 0; row < active.length;) {
         let end = row + 1;
         if (active[row].length) {
           while (end < active.length && JSON.stringify(active[end]) === JSON.stringify(active[row])) end++;
         }
         column.runs.set(row, { rowSpan: end - row, start: times[row], end: times[end], courts: active[row] });
+        if (active[row].length) {
+          // Neighboring parks use separate color pairs; successive windows alternate.
+          column.tones.set(row, (columnIndex % 2) * 2 + blockIndex++ % 2);
+        }
         row = end;
       }
     }
@@ -128,7 +142,7 @@
 
   // Also load these pure date/filter functions in Node's built-in test runner.
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl, isQueryTime };
+    module.exports = { pacificClock, nextDates, visibleSlots, validateSnapshot, buildTimeline, courtBookingUrl, isQueryTime, snapshotRefreshDue };
     return;
   }
 
@@ -202,7 +216,7 @@
       for (const column of columns) {
         const run = column.runs.get(row);
         if (!run) continue; // Covered by an earlier rowspan.
-        const cell = element("td", run.courts.length ? "available" : "");
+        const cell = element("td", run.courts.length ? `available tone-${column.tones.get(row)}` : "");
         cell.rowSpan = run.rowSpan;
         if (run.courts.length) {
           const window = `${formatTime(run.start)}–${formatTime(run.end)}`;
@@ -262,7 +276,7 @@
       } else if (parks) {
         section.append(timetable(parks, date, clock));
       } else {
-        const pending = !isQueryTime(clock) ? "Updates resume at 7 am Pacific." : "Awaiting the next successful update. Check CivicRec for this date.";
+        const pending = !isQueryTime(clock) ? "Awaiting the midnight availability update." : "Awaiting the next successful update. Check CivicRec for this date.";
         section.append(element("p", "muted", loading && !snapshot ? "Loading…" : pending));
       }
       results.append(section);
@@ -363,12 +377,13 @@
   reload(true);
   setupMap();
   setInterval(() => {
-    if (isQueryTime(pacificClock()) && Date.now() - lastAttempt >= 15 * 60000) reload();
+    if (snapshotRefreshDue(snapshot, pacificClock(), lastAttempt)) reload();
     else render();
   }, 60000);
   document.addEventListener("visibilitychange", () => {
     if (!document.hidden) {
-      if (isQueryTime(pacificClock()) && Date.now() - lastAttempt > 5 * 60000) reload();
+      const clock = pacificClock();
+      if (snapshotRefreshDue(snapshot, clock, lastAttempt) || (isQueryTime(clock) && Date.now() - lastAttempt > 5 * 60000)) reload();
       else render();
     }
   });

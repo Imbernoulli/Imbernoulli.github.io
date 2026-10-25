@@ -5,6 +5,9 @@ on:
     # Local Pacific time, including daylight saving time. Avoid the busy hour boundary.
     - cron: '17 7-21 * * *'
       timezone: America/Los_Angeles
+    # Fetch after the Pacific calendar date changes, so the new third day is included.
+    - cron: '0 0 * * *'
+      timezone: America/Los_Angeles
   workflow_dispatch:
   push:
     branches: [master]
@@ -46,18 +49,24 @@ jobs:
           print(f"Waiting {delay} seconds before querying CivicRec", flush=True)
           time.sleep(delay)
           PY
-      - name: Check Pacific opening hours after any scheduling delay
+      - name: Check Pacific query window after any scheduling delay
         id: hours
+        env:
+          TENNIS_SCHEDULE: ${{ github.event.schedule }}
         run: |
           python3 - <<'PY'
           import datetime as dt
           import os
           from zoneinfo import ZoneInfo
           now = dt.datetime.now(ZoneInfo("America/Los_Angeles"))
-          allowed = 7 <= now.hour < 22
+          midnight_run = (
+              os.environ.get("GITHUB_EVENT_NAME") == "schedule"
+              and os.environ.get("TENNIS_SCHEDULE") == "0 0 * * *"
+          )
+          allowed = now.hour == 0 or 7 <= now.hour < 22 or (midnight_run and now.hour < 7)
           with open(os.environ["GITHUB_OUTPUT"], "a") as output:
               output.write(f"allowed={str(allowed).lower()}\n")
-          print("Query window open" if allowed else "Outside 07:00–22:00 Pacific; skipping query")
+          print("Query window open" if allowed else "Outside daytime and midnight refresh windows; skipping query")
           PY
       - name: Query the next three Pacific dates
         if: steps.hours.outputs.allowed == 'true'
