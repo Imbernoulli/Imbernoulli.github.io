@@ -59,6 +59,10 @@ rather than being labeled as having no openings. Reloading the page or the snaps
 does not trigger a new CivicRec query; bookings and final availability are on CivicRec.
 HTTP 429 stops the current update without immediate retries, preserving the last
 successful data instead of repeatedly requesting a rate-limited service.
+CivicRec can return the next day's hours when the requested date is exhausted.
+The scraper filters those hours out instead of assigning them to the requested
+date or failing the entire update. Zero-length fragments are ignored; reversed
+intervals and malformed responses still fail with court/date diagnostics.
 
 GitHub schedules can be delayed, and public-repository schedules can be disabled
 after 60 days without repository activity. Monitor Actions if updates stop; see

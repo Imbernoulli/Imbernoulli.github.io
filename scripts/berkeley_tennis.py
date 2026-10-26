@@ -99,16 +99,33 @@ class Client:
         hours = self.items(
             f"getFacilityHours/{self.key}/{court_id}/{rate['id']}/{date}", "hours"
         )
-        segments = sorted({
-            (dt.datetime.fromisoformat(hour["startDtm"]), dt.datetime.fromisoformat(hour["endDtm"]))
-            for hour in hours
-            if str(hour.get("rateType", {}).get("id")) == str(rate["id"])
-            and not hour.get("block")
-        })
+        segments = set()
+        other_dates = set()
+        for hour in hours:
+            if str(hour.get("rateType", {}).get("id")) != str(rate["id"]) or hour.get("block"):
+                continue
+            start = dt.datetime.fromisoformat(hour["startDtm"])
+            end = dt.datetime.fromisoformat(hour["endDtm"])
+            if end < start:
+                raise ValueError(
+                    f"CivicRec returned a reversed interval for court {court_id}, {date}: "
+                    f"{start.isoformat()} to {end.isoformat()}"
+                )
+            if end == start:
+                continue
+            # CivicRec can roll an exhausted date forward to another day. Only
+            # retain hours belonging to the requested date, never relabel them.
+            if start.date().isoformat() != date or end.date() != start.date():
+                other_dates.add(f"{start.date()}/{end.date()}")
+                continue
+            segments.add((start, end))
+        if other_dates:
+            print(
+                f"CivicRec court {court_id}, requested {date}: ignored hours on "
+                + ", ".join(sorted(other_dates)), file=sys.stderr
+            )
         merged = []
-        for start, end in segments:
-            if end <= start or start.date().isoformat() != date or end.date() != start.date():
-                raise ValueError("CivicRec returned an invalid or unexpected time interval")
+        for start, end in sorted(segments):
             if merged and start <= merged[-1][1]:
                 merged[-1] = (merged[-1][0], max(merged[-1][1], end))
             else:

@@ -41,6 +41,37 @@ class AvailabilityTests(unittest.TestCase):
         self.assertEqual([(a.strftime("%H:%M"), b.strftime("%H:%M")) for a, b in segments],
                          [("17:00", "19:00"), ("20:00", "21:00")])
 
+    def test_civicrec_rollover_does_not_relabel_next_day_hours(self):
+        client = tennis.Client()
+        client.key = "test"
+        rates = [{"id": "483068", "label": "Adult Non-Res 5"}]
+        # Reproduced on the live endpoint: requesting Oct 25 returns Oct 26.
+        hours = [{"startDtm": "2026-10-26 07:00:00", "endDtm": "2026-10-26 10:00:00",
+                  "rateType": {"id": "483068"}, "block": False}]
+        with patch.object(client, "items", side_effect=[rates, hours]), patch("sys.stderr"):
+            rate, segments = client.slots("77101", "2026-10-25")
+        self.assertEqual(rate, rates[0])
+        self.assertEqual(segments, [])
+
+        # Filtering a returned next-day window must preserve valid same-day hours.
+        same_day = {**hours[0], "startDtm": "2026-10-25 17:00:00", "endDtm": "2026-10-25 18:00:00"}
+        with patch.object(client, "items", side_effect=[rates, [same_day, *hours]]), patch("sys.stderr"):
+            _, segments = client.slots("77101", "2026-10-25")
+        self.assertEqual(segments, [(dt.datetime(2026, 10, 25, 17), dt.datetime(2026, 10, 25, 18))])
+
+    def test_zero_length_fragment_is_empty_but_reversed_interval_is_failure(self):
+        client = tennis.Client()
+        client.key = "test"
+        rates = [{"id": 1, "label": "Adult"}]
+        hour = {"startDtm": "2026-10-25 18:00:00", "endDtm": "2026-10-25 18:00:00",
+                "rateType": {"id": 1}, "block": False}
+        with patch.object(client, "items", side_effect=[rates, [hour]]):
+            self.assertEqual(client.slots("77101", "2026-10-25")[1], [])
+        hour["endDtm"] = "2026-10-25 17:00:00"
+        with patch.object(client, "items", side_effect=[rates, [hour]]):
+            with self.assertRaisesRegex(ValueError, "court 77101, 2026-10-25"):
+                client.slots("77101", "2026-10-25")
+
     def test_missing_payload_is_failure_but_empty_hours_is_valid(self):
         client = tennis.Client()
         with patch.object(client, "_req", return_value='{"success": false}'):
