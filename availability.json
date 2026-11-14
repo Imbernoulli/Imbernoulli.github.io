@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "timezone": "America/Los_Angeles",
-  "query_started_at": "2026-11-13T13:32:00-08:00",
-  "generated_at": "2026-11-13T13:32:19-08:00",
+  "query_started_at": "2026-11-13T18:35:25-08:00",
+  "generated_at": "2026-11-13T18:35:50-08:00",
   "booking_url": "https://ca-berkeley.civicrec.com/CA/berkeley-ca/catalog/index/50900cc08e08223966673cbdc0c1b7e3?filter=c2VhcmNoPVRlbm5pcyUyMGNvdXJ0JnJlbnRhbCU1QmZyb20lNUQ9JnJlbnRhbCU1QnRvJTVEPQ==",
   "dates": {
     "2026-11-13": {
@@ -157,7 +157,7 @@
               "16:30"
             ],
             [
-              "19:30",
+              "20:30",
               "22:00"
             ]
           ]
@@ -420,10 +420,6 @@
               "09:00"
             ],
             [
-              "14:30",
-              "15:30"
-            ],
-            [
               "16:30",
               "22:00"
             ]
@@ -438,10 +434,6 @@
             [
               "07:00",
               "09:00"
-            ],
-            [
-              "13:30",
-              "14:30"
             ],
             [
               "16:30",
@@ -463,7 +455,7 @@
             ],
             [
               "13:00",
-              "15:00"
+              "14:00"
             ],
             [
               "18:00",
@@ -596,7 +588,7 @@
           "fee": "10",
           "slots": [
             [
-              "18:30",
+              "19:30",
               "22:00"
             ]
           ]
