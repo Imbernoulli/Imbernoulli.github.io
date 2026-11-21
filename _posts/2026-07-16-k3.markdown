@@ -12,7 +12,6 @@ code: https://github.com/MoonshotAI/Kimi-K3
 huggingface: https://huggingface.co/moonshotai/Kimi-K3
 selected: true
 highlight: true
-sensitive: true
 bibtex: |
     @techreport{kimi2026k3,
         title={Kimi K3},
